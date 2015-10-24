@@ -4,10 +4,22 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+session_start();
+include('php/funcoes.php');
+if(!empty($_POST["login"]) && !empty($_POST["senha"])){
+	$login = $_POST["login"];
+	$senha = $_POST["senha"];
+	logar($login,$senha);
+}
+if(isset($_GET['logout'])) {
+	logout();
+}
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>The Free Food-Point for Website Template | Home :: w3layouts</title>
+<title>Cantina Fatec Praia Grande | Home</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
@@ -22,32 +34,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="welcome">Welcome To <span>Food Point</span></div>
 		<div class="top-nav">
 	        <ul>
-	            <li class="active"><a href="index.html">Home</a></li>
-	            <li><a href="gallery.html">Gallery</a></li>
-	            <li><a href="#">Blog</a></li>
-	            <li><a href="#">Login</a></li>
-	            <li><a href="contact.html">Contact</a></li>
+	            <li class="active"><a href="index.php">Home</a></li>	
+            <li><a href="cadastro.php">Cadastro</a></li>
+            <li><a href="gallery.php">Galeria</a></li>            
+            <li><a href="contact.php">Contato</a></li>
 	        </ul>
 	    </div>
 	    <div class="clear"> </div>
     </div>
 	<div class="header">
-	<div class="logo"><a href="index.html"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
+	<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
     <div class="search">
-    	<form>
-    		<input type="text" value="" />
-    		<input type="submit" value="" />
-    	</form>
+		    <?php if(empty($_SESSION['login_adm'])){ ?>
+			    <form method="POST">
+			    	<input type="text" name="login" placeholder="LOGIN"/>
+			    	<br>
+			    	<input type="password" name="senha" placeholder="SENHA"/>
+			    	<br>
+			    	<input type="submit" value="Logar" />
+			    </form>    
+		    <?php }else{ ?>
+		    	<form method="GET">
+				    Bem Vindo, <?php echo $_SESSION['login_adm']; ?> !
+				    <input type="submit" value="Sair" name="logout" />
+				</form>
+		    <?php } ?>
+	    
     </div>
+
     <div class="clear"> </div>
 	</div>
 	<div class="nav">
         <ul>
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="contact.html">contact</a></li>
+            <li class="active"><a href="index.php">Home</a></li>
+	    <li><a href="#">Menu</a></li>
+            <li><a href="cadastro.php">Cadastro</a></li>
+            <li><a href="gallery.php">Galeria</a></li>           
+            <li><a href="contact.php">Contato</a></li>
+            <?php if (isset($_SESSION['login_adm'])){ ?>
+            	<li><a href="adm.php">Administração</a></li>
+            <?php } ?>
             <div class="clear"> </div>
         </ul>
     </div>
@@ -114,7 +140,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="order">
 		<ul>
 			<li>
-			<h3>ORDER</h3>
+			<h3>PEDIDO</h3>
 			<h4>No Products</h4>
 			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
 			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
@@ -127,7 +153,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="clear"> </div>
 		<ul>
 			<li>
-			<h3>Restaurants Hours</h3>
+			<h3>Horário de Funcionamento</h3>
 			<h4>Breakfast </h4>
 			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
 			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
@@ -136,7 +162,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
 		</li>
 		<li>
-			<h3>News And Events</h3>
+			<h3>Notícias e Eventos</h3>
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
 			<button>Read more</button>
 			<h3>Lorem Ipsum is simply</h3>
@@ -153,37 +179,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="wrap">
 			<div class="footer-grids">
 				<div class="footer-grid1">
-					<h3>INFORMATION</h3>
+					<h3>INFORMAÇÕES</h3>
 					<ul>
-						<li><a href="">Our Store</a></li>
-						<li><a href="">Contact Us</a></li>
-						<li><a href="">Delivery</a></li>
+						<li><a href="">Nossa Loja</a></li>
+						<li><a href="">Contate-nos</a></li>
 						<li><a href="">Legal Notice</a></li>
-						<li><a href="">About Us</a></li>
+						<li><a href="">Sobre</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid1">
-					<h3>OUR OFFERS</h3>
+					<h3>NOSSAS OFERTAS</h3>
 					<ul>
-						<li><a href="">specials</a></li>
-						<li><a href="">New Products</a></li>
-						<li><a href="">Top Sellers</a></li>
-						<li><a href="">Manufacures</a></li>
-						<li><a href="">Suplliers</a></li>
+						<li><a href="">Especiais</a></li>
+						<li><a href="">Novos Produtos</a></li>
+						<li><a href="">Mais vendidos</a></li>
+						<li><a href="">Fábricas</a></li>
+						<li><a href="">Fornecedores</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid1">
-					<h3>YOURACCOUNT</h3>
+					<h3>SUA CONTA</h3>
 					<ul>
-						<li><a href="">Your Orders</a></li>
-						<li><a href="">Your cradit slips</a></li>
-						<li><a href="">Your Address</a></li>
+						<li><a href="">Seus Pedidos</a></li>
+						<li><a href="">Seus Créditos</a></li>
+						<li><a href="">Seu Endereço</a></li>
 						<li><a href="">Your personalinfo</a></li>
-						<li><a href="">Your vochers</a></li>
+						<li><a href="">Seus vochers</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid2">
-					<h3>FALLOWS US</h3>
+					<h3>SIGA-NOS</h3>
 					<ul>
 						<li><a href=""><img src="images/facebook.png" title="facebook"/></a></li>
 						<li><a href=""><img src="images/twitter.png" title="twitter"></a></li>

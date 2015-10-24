@@ -1,3 +1,15 @@
+<?php
+session_start();
+include('php/funcoes.php');
+if(!empty($_POST["login"]) && !empty($_POST["senha"])){
+	$login = $_POST["login"];
+	$senha = $_POST["senha"];
+	logar($login,$senha);
+}
+if(isset($_GET['logout'])) {
+	logout();
+}
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -22,32 +34,45 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="welcome">Welcome To <span>Food Point</span></div>
 		<div class="top-nav">
 	        <ul>
-	            <li><a href="index.html">Home</a></li>
-	            <li><a href="gallery.html">Gallery</a></li>
+	            <li><a href="index.php">Home</a></li>
+	            <li><a href="gallery.php">Gallery</a></li>
 	            <li><a href="#">Blog</a></li>
 	            <li><a href="#">Login</a></li>
-	            <li><a href="contact.html">Contact</a></li>
+	            <li><a href="contact.php">Contact</a></li>
 	        </ul>
 	    </div>
 	    <div class="clear"> </div>
     </div>
 	<div class="header">
-	<div class="logo"><a href="index.html"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
+	<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
     <div class="search">
-    	<form>
-    		<input type="text" value="" />
-    		<input type="submit" value="" />
-    	</form>
+     <?php if(empty($_SESSION['login_adm'])){ ?>
+			    <form method="POST">
+			    	<input type="text" name="login" placeholder="LOGIN"/>
+			    	<br>
+			    	<input type="password" name="senha" placeholder="SENHA"/>
+			    	<br>
+			    	<input type="submit" value="Logar" />
+			    </form>    
+		    <?php }else{ ?>
+		    	<form method="GET">
+				    Bem Vindo, <?php echo $_SESSION['login_adm']; ?> !
+				    <input type="submit" value="Sair" name="logout" />
+				</form>
+		    <?php } ?>
     </div>
     <div class="clear"> </div>
 	</div>
 	<div class="nav">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="about.html">About</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="cadastro.php">Cadastro</a></li>
+            <li><a href="gallery.php">Galeria</a></li>
             <li><a href="#">Menu</a></li>
-            <li><a href="contact.html">contact</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <?php if (isset($_SESSION['login_adm'])){ ?>
+            	<li><a href="adm.php">Administração</a></li>
+            <?php } ?>
             <div class="clear"> </div>
         </ul>
     </div>
@@ -66,23 +91,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div clas="clear"> </div>
 	<div class="grids">
 		<ul>
-			<h4>ABOUT US</h4>
-			<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-			<div class="about-grid1">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-				<img src="images/about-1.jpg" title="img1"/> 
-				<div class="clear"> </div>
-			</div>
-			<div class="about-grid1">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-				<img src="images/thumb-8.jpg" title="img1"/> 
-				<div class="clear"> </div>
-			</div>
-			<div class="about-grid1">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-				<img src="images/about-2.jpg" title="img1"/> 
-				<div class="clear"> </div>
-			</div>
+			<h4>CADASTRO CLIENTES</h4>
+			<p>
+				<form method="POST">
+					<input type="text" placeholder="NOME COMPLETO"/> <br><br>
+					<input type="text" placeholder="EMAIL@EMAIL.COM.BR"/> <br><br>
+					<input type="text" placeholder="(XX) XXXXX-XXXX"/> <br><br>
+					<input type="password" placeholder="SENHA"/> <br><br>
+					<input type="password" placeholder="CONFIRMA SENHA"/> <br><br>
+					<select name="tipo_usuario">
+						<option value="cliente">Cliente</option>
+						<option value="funcionario">Funcionário</option>
+						<option value="administrador">Administrador</option>
+					</select><br><br>
+					<input type="submit" value="CONFIRMAR" />
+					<input type="reset" value="LIMPAR" /><br><br>
+				</form>
+			</p>
 		<div class="clear"> </div>
 		<br>
 		<h4>Latest-Items</h4>

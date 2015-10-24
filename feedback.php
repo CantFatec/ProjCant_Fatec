@@ -1,3 +1,15 @@
+<?php
+session_start();
+include('php/funcoes.php');
+if(!empty($_POST["login"]) && !empty($_POST["senha"])){
+    $login = $_POST["login"];
+    $senha = $_POST["senha"];
+    logar($login,$senha);
+}
+if(isset($_GET['logout'])) {
+    logout();
+}
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -16,14 +28,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 <div class="header">
 <div class="wrap">
-<div class="logo"><a href="index.html"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
+<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
     <div class="nav">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="single.html">Gallery</a></li>
-            <li><a href="single.html">Blog</a></li>
-            <li><a href="single.html">Login</a></li>
-            <li class="active"><a href="feedback.html">Contact</a></li>
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="cadastro.php">Cadastro</a></li>
+            <li><a href="gallery.php">Galeria</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="contact.php">Contato</a></li>
+            <?php if (isset($_SESSION['login_adm'])){ ?>
+                <li><a href="adm.php">Administração</a></li>
+            <?php } ?>
+            <div class="clear"> </div>
         </ul>
     </div>
     <div class="clear"></div>
@@ -44,11 +60,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             	<span><input type="text" value="" /></span>
             </div>
         	<div>
-            	<span><label>body</label></span>
+            	<span><label>Mensagem</label></span>
             	<span><textarea></textarea></span>
             </div>
         	<div>
-            	<span><input type="submit" value="Submit" /></span>
+            	<span><input type="submit" value="Enviar" /></span>
             </div>
         </form>
     </div>
@@ -59,11 +75,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="footer">
     <div class="wrap">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="single.html">About</a></li>
-            <li><a href="single.html">Services</a></li>
-            <li><a href="single.html">Login</a></li>
-            <li><a href="feedback.html">Contact</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="single.php">About</a></li>
+            <li><a href="single.php">Services</a></li>
+            <li><a href="single.php">Login</a></li>
+            <li><a href="feedback.php">Contact</a></li>
         </ul>
     <div class="copy">
     	<p>&copy; 2012 rights Reseverd | Design by <a href="http://w3layouts.com">W3Layouts.com</a></p>
