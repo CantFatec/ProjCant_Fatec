@@ -148,7 +148,17 @@ function letras1(v){
     <div class="clear"> </div>
 	</div>
 	<div class="nav">
-        <?php include 'menu.php'; ?>
+        <ul>
+            <li class="active"><a href="index.php">Home</a></li>
+	    <li><a href="#">Menu</a></li>	
+            <li><a href="cadastro.php">Cadastro</a></li>
+            <li><a href="gallery.php">Galeria</a></li>            
+            <li><a href="contact.php">Contato</a></li>
+            <?php if (isset($_SESSION['login_adm'])){ ?>
+            	<li><a href="adm.php">Administração</a></li>
+            <?php } ?>
+            <div class="clear"> </div>
+        </ul>
 	</div>
 	<div class="main-body">
 	<div id="slider">
@@ -166,17 +176,17 @@ function letras1(v){
 	<div class="grids">
 		<ul>
 			<h4>CADASTRO CLIENTES</h4>
-			<p>
+			<p><div id="erros1" style="color:red"></div>
+				<div id="erros2" style="color:red"></div>
+				<div id="erros3" style="color:red"></div>
+				<div id="erros4" style="color:red"></div>
 				<form name="form1" method="POST">
-					<input id="nome" onkeypress="mascara(this, letras1)" onBlur="ValidaNome(form1.nome);" maxlength="50" name="nome" type="text" name="nome" required placeholder="NOME COMPLETO"/> <br><div id="erros1" style="color:red"></div>
-				<br>
-					<input id="cpf" onkeypress="mascara(this, cpf1)" maxlength="14" name="cpf" type="text" onBlur="ValidarCPF(form1.cpf);" placeholder="CPF: XXX.XXX.XXX-XX" required /> <br><div id="erros2" style="color:red"></div>
-				<br>
-					<input id="tel" onkeypress="mascara(this, telefone)" maxlength="15" name="tel" type="text" onBlur="ValidaTelefone(form1.tel);" placeholder="Telefone: (DDD) XXXX-XXXXX" required /> <br><div id="erros3" style="color:red"></div>
-				<br>
+					<input id="nome" onkeypress="mascara(this, letras1)" onBlur="ValidaNome(form1.nome);" maxlength="50" name="nome" type="text" name="nome" required placeholder="NOME COMPLETO"/> <br><br>
+					<input id="cpf" onkeypress="mascara(this, cpf1)" maxlength="14" name="cpf" type="text" onBlur="ValidarCPF(form1.cpf);" placeholder="CPF: XXX.XXX.XXX-XX" required /> <br><br>
+					<input id="tel" onkeypress="mascara(this, telefone)" maxlength="15" name="tel" type="text" onBlur="ValidaTelefone(form1.tel);" placeholder="Telefone: (DDD) XXXX-XXXXX" required /> <br><br>
 					<input name="email"type="email" placeholder="E-Mail: EMAIL@DOMINIO.COM.BR" required /> <br><br>
 					<input name="senha1" id="senha1" type="password" placeholder="SENHA" required/> <br><br>
-					<input id="senha2" name="senha2" type="password" onBlur="ValidaSenha(form1.senha2);" placeholder="CONFIRMAR SENHA" required/> <br><div id="erros4" style="color:red"></div><br>
+					<input id="senha2" name="senha2" type="password" onBlur="ValidaSenha(form1.senha2);" placeholder="CONFIRMAR SENHA" required/> <br><br>
 					<?php if(!empty($_SESSION['logado']) && ($_SESSION['is_administrador'] == 1)){ ?>
 						<select name="tipo_usuario">
 							<option value="cliente">Cliente</option>

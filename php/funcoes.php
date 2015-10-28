@@ -16,13 +16,15 @@ function conectar(){
 
 function logar($login,$senha){
 	conectar();
-	$sql = 'select * from login_site where login = "'.$login.'" and senha = "'.$senha.'"';
+	$sql = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha.'"';
 	$consulta = mysql_query($sql);
 	if(count($consulta)>0){
 		while($usuario = mysql_fetch_row($consulta)){			
-			$_SESSION['id'] = $usuario[0];
+			$_SESSION['login'] = $usuario[0];
 			$_SESSION['login_adm'] = $usuario[1];
 			$_SESSION['senha'] = $usuario[2];
+			$_SESSION['cpf'] = $login;
+			$cpf = $usuario[2];
 			$_SESSION['logado']=1;
 		}
 	}
@@ -40,24 +42,68 @@ function cadastrarUsuario(){
 	conectar();
 	$nome = $_POST['nome'];
 	$cpf = $_POST['cpf'];
+		$cpf = str_replace(".", "", $cpf);
+		$cpf = str_replace("-", "", $cpf);
 	$email = $_POST['email'];
 	$tel = $_POST['tel'];
+		$tel = str_replace("-", "", $tel);
+		$tel = str_replace(" ", "", $tel);
+		$tel = str_replace("(", "", $tel);
+		$tel = str_replace(")", "", $tel);
 	$senha1 = $_POST['senha1'];
+		$senha1 = md5($senha1);
 	$tipo_usuario = $_POST['tipo_usuario'];
 	$is_funcionario = 0;
 	$is_cliente = 0;
 	$is_administrador = 0;
-	
+
 	if($tipo_usuario == "cliente") $is_cliente = 1;
 	else if($tipo_usuario == "funcionario") $is_funcionario = 1;
 	else if($tipo_usuario == "administrador") $is_administrador = 1;
 
-	$sql = "INSERT INTO usuario VALUES (null,'".$nome."',$cpf,$tel,'".$email."','".$senha1."',$is_funcionario,$is_cliente,$is_administrador)";
+	$sql = "INSERT INTO usuario VALUES (null,'".$nome."','".$cpf."','".$tel."','".$email."','".$senha1."','".$is_funcionario."','".$is_cliente."','".$is_administrador."')";
 	$insert = mysql_query($sql);
 	if($insert)	echo ('<script> alert("Cadastro Realizado com Sucesso!"); location.href="index.php";</script>');
 	
 
 	mysql_close();
+}
+
+function alterarUsuario(){
+	$id_user = $_POST['id_user'];
+	$tb = $_POST['tb'];
+	$nome = $_POST['nome'];
+	$cpf = $_POST['cpf'];
+	$email = $_POST['email'];
+	$tel = $_POST['tel'];
+	$senha1 = $_POST['senha1'];
+		$senha1 = md5($senha1);
+	$senha2 = $_POST['senha2'];
+		$senha2 = md5($senha2);
+	$tipo_usuario = $_POST['tipo_usuario'];
+
+	if($senha1 === $senha2){
+
+	}else{
+		echo "<script>alert('Senhas Divergentes!'); window.history.go(-1);</script>";
+	}
+	
+	if($tipo_usuario == "cliente") $is_cliente = 1;
+	else if($tipo_usuario == "funcionario") $is_funcionario = 1;
+	else if($tipo_usuario == "administrador") $is_administrador = 1;
+
+	conectar();
+	
+	$sql = "UPDATE $tb SET nome='$nome',telefone='$tel',email='$email',senha='$senha1' WHERE id_usuario=$id_user";
+	$consulta = mysql_query($sql);
+	if($consulta){
+		echo ('<script> alert("Dados alterado com sucesso!"); location.href="index.php";</script>');
+			 }
+	else{
+		print mysql_error();
+			 }
+	mysql_close();
+
 }
 
 /*

@@ -38,17 +38,7 @@ if(isset($_GET['logout'])) {
 <div class="wracadastro">
 <div class="logo"><a href="index.cadastrohcadastrocadastrohcadastro"><img src="images/logo.cadastrohcadastrocadastrong"  alt="Flowerilla"/></a></div>
     <div class="nav">
-        <ul>
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="cadastro.php">Cadastro</a></li>
-            <li><a href="gallery.php">Galeria</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="contact.php">Contato</a></li>
-            <?php if (isse($_SESSION['login_adm'])){ ?>
-            	<li><a href="adm.php">Administração</a></li>
-            <?php } ?>
-            <div class="clear"> </div>
-        </ul>
+        <?php include 'menu.php'; ?>
     </div>
     <div class="clear"></div>
     </div>

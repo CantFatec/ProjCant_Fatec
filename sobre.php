@@ -1,3 +1,9 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <?php
 session_start();
 include('php/funcoes.php');
@@ -10,16 +16,10 @@ if(isset($_GET['logout'])) {
 	logout();
 }
 ?>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Cantina Fatec Praia Grande | Contato</title>
+<title>Cantina Fatec Praia Grande | Sobre</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
@@ -34,10 +34,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="welcome">Welcome To <span>Food Point</span></div>
 		<div class="top-nav">
 	        <ul>
-	            <li><a href="index.php">Home</a></li>	            
-	            <li><a href="cadastro.php">Cadastro</a></li>
-		    <li><a href="gallery.php">Galeria</a></li>	            
-	            <li class="active"><a href="contact.php">Contato</a></li>
+	            <li class="active"><a href="index.php">Home</a></li>	
+            <li><a href="cadastro.php">Cadastro</a></li>
+            <li><a href="gallery.php">Galeria</a></li>            
+            <li><a href="contact.php">Contato</a></li>
 	        </ul>
 	    </div>
 	    <div class="clear"> </div>
@@ -45,7 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header">
 	<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
     <div class="search">
-     <?php if(empty($_SESSION['login_adm'])){ ?>
+		    <?php if(empty($_SESSION['login_adm'])){ ?>
 			    <form method="POST">
 			    	<input type="text" name="login" placeholder="LOGIN"/>
 			    	<br>
@@ -59,7 +59,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				    <input type="submit" value="Sair" name="logout" />
 				</form>
 		    <?php } ?>
+	    
     </div>
+
     <div class="clear"> </div>
 	</div>
 	<div class="nav">
@@ -77,50 +79,92 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<img src="images/slider-3.jpg" alt="Price of Persia" />
 			</a>
 	</div>
-	<div class="feed">
-	<div class="feedback">
-        <h1>Feedback</h1>
-       <form> 
-
-
-<p><b>Nome:</b><br>
-
-<input type=text name="nome" size="45"></p><br>
-<p><b>Email:</b><br>
-
-<input type=text name="email" size="45"></p><br>
-<p><b>Assunto:</b><br>
-
-<input type=text name="assunto" size="45"></p><br>
-<p><b>Mensagem:</b><br>
-
-<textarea name="Mensagem" rows="10" cols="60" wrap="virtual"></textarea></p><br>
-<p><input type="submit" value="Enviar Email"> <input type="reset" value=" Limpar "></p>
-
-</form>
-<?php
-$headers = "MIME-Version: 1.1\r\n";
-$headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
-$headers .= "From:administrador@cantinafatecpg.esy.es\r\n"; 
-$headers .= "Return-Path: administrador@cantinafatecpg.esy.es\r\n"; 
-$envio = mail("nome","email", "assunto", "Mensagem", $headers);
- 
-if($envio)
- echo "Mensagem enviada com sucesso!!";
-else
- echo "A mensagem não pode ser enviada!!";
-?>
-
-
-    </div>
-    <div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.7359037335136!2d-46.414400185013825!3d-24.00510128446442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1db2e586da8d%3A0x271ae3e10bdc671e!2sFatec!5e0!3m2!1spt-BR!2sbr!4v1445904273520" width="350" height="290" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="border:0" allowfullscreen></iframe>
-</small></div>
-    <div class="clear"></div>
-</div>
-</div>
+	<div class="grids">
+		<ul>
+			<h4>To day-Items</h4>
+		<li>
+			<h3>Ipsum simply</h3>
+			<img src="images/thumb-1.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>$12.58</button>
+		</li>
+		<li>
+			<h3>Lorem Ipsum</h3>
+			<img src="images/thumb-2.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>$12.58</button>
+		</li>
+		<li>
+			<h3>Ipsum simply</h3>
+			<img src="images/thumb-3.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>$12.58</button>
+		</li>
+		<a href="#">View all</a>
+		<div class="clear"> </div>
+		
+		<h4>Latest-Items</h4>
+		<li>
+			<h3>Ipsum simply</h3>
+			<img src="images/thumb-5.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>$12.58</button>
+		</li>
+		<li>
+			<h3> Lorem Ipsum</h3>
+			<img src="images/thumb-6.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>$12.58</button>
+		</li>
+		<li class="last">
+			<h3>Lorem simply</h3>
+			<img src="images/thumb-4.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>$12.58</button>
+		</li>
+		<a href="#">View all</a>
+		</ul>
+		<div class="clear"> </div>
+	</div>
+	<div class="boxes">
+		<div class="order">
+		<ul>
+			<li>
+			<h3>PEDIDO</h3>
+			<h4>No Products</h4>
+			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
+			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
+			<h5>Pricee and tax-include</h5>
+			<h6><a href="#">Check-out</a></h6>
+			<h6><a href="#">cart</a></h6>
+		</li>
+		</ul>
+		</div>
+		<div class="clear"> </div>
+		<ul>
+			<li>
+			<h3>Horário de Funcionamento</h3>
+			<h4>Breakfast </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+			<h4>Lunch </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+		</li>
+		<li>
+			<h3>Notícias e Eventos</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+			<h3>Lorem Ipsum is simply</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+		</li>
+		<div class="clear"> </div>
+		</ul>
+	</div>
 	<div class="clear"> </div>
     </div>
+</div>
 <div class="footer1">
 	<div class="wrap">
 			<div class="footer-grids">
@@ -130,7 +174,7 @@ else
 						<li><a href="">Nossa Loja</a></li>
 						<li><a href="">Contate-nos</a></li>
 						<li><a href="">Legal Notice</a></li>
-						<li><a href="">Sobre</a></li>
+						<li><a href="sobre.php">Sobre</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid1">
@@ -159,7 +203,6 @@ else
 						<li><a href=""><img src="images/facebook.png" title="facebook"/></a></li>
 						<li><a href=""><img src="images/twitter.png" title="twitter"></a></li>
 						<li><a href=""><img src="images/rss.png" title="rss"></a></li>
-						
 					</ul>
 				</div>
 			</div>

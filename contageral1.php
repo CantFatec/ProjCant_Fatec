@@ -1,36 +1,48 @@
+<?php
+session_start();
+include('php/funcoes.php');
+if(!empty($_POST["login"]) && !empty($_POST["senha"])){
+	$login = $_POST["login"];
+	$senha = $_POST["senha"];
+	logar($login,$senha);
+}
+if(isset($_GET['logout'])) {
+	logout();
+}
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<?php
-
-include 'session.php';
-
-?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Cantina Fatec Praia Grande | Home</title>
+<title>Cantina Fatec Praia Grande | Conta Geral</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery1.js"></script>
+<script type="text/javascript" src="js/jquery.lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen" />
+  <script type="text/javascript">
+    $(function() {
+        $('.gallery a').lightBox();
+    });
+    </script>
 </head>
 <body>
 <div class="wrap">
 	<div class="top-head">
 		<div class="welcome">Welcome To <span>Food Point</span></div>
 		<div class="top-nav">
-	        <ul>
-	            <li class="active"><a href="index.php">Home</a></li>	
-            <li><a href="cadastro.php">Cadastro</a></li>
-            <li><a href="gallery.php">Galeria</a></li>            
-            <li><a href="contact.php">Contato</a></li>
+	       <ul>
+	            <li class="active"><a href="index.php">Home</a></li>	            
+	            <li><a href="cadastro.php">Cadastro</a></li>
+		    <li><a href="gallery.php">Galeria</a></li>
+	            <li><a href="contact.php">Contato</a></li>
 	        </ul>
 	    </div>
 	    <div class="clear"> </div>
@@ -38,9 +50,9 @@ include 'session.php';
 	<div class="header">
 	<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
     <div class="search">
-		    <?php if(empty($_SESSION['login_adm'])){ ?>
+    	<?php if(empty($_SESSION['login_adm'])){ ?>
 			    <form method="POST">
-			    	<input type="text" name="login" placeholder="C.P.F."/>
+			    	<input type="text" name="login" placeholder="LOGIN"/>
 			    	<br>
 			    	<input type="password" name="senha" placeholder="SENHA"/>
 			    	<br>
@@ -52,70 +64,34 @@ include 'session.php';
 				    <input type="submit" value="Sair" name="logout" />
 				</form>
 		    <?php } ?>
-	    
     </div>
-
     <div class="clear"> </div>
 	</div>
-	<?php include 'menu.php'; ?>
+	<div class="nav">
+       <?php include 'menu.php'; ?>
+    </div>
 	<div class="main-body">
-	<div id="slider">
-			<a href="#" target="_blank">
-				<img src="images/slider-1.jpg" alt="Mini Ninjas" />
-			</a>
-			<a href="#" target="_blank">
-				<img src="images/slider-2.jpg" alt="Price of Persia" />
-			</a>
-			<a href="#" target="_blank">
-				<img src="images/slider-3.jpg" alt="Price of Persia" />
-			</a>
-	</div>
 	<div class="grids">
-		<ul>
-			<h4>Itens mais pedidos</h4>
-		<li>
-			<h3>Prato feito Bife sem cebola</h3>
-			<img src="images/thumb-1.jpg">
-			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
-			<button>R$10</button>
-		</li>
-		<li>
-			<h3>Lorem Ipsum</h3>
-			<img src="images/thumb-2.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<li>
-			<h3>Ipsum simply</h3>
-			<img src="images/thumb-3.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<a href="#">View all</a>
-		<div class="clear"> </div>
-		
-		<h4>Latest-Items</h4>
-		<li>
-			<h3>Ipsum simply</h3>
-			<img src="images/thumb-5.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<li>
-			<h3> Lorem Ipsum</h3>
-			<img src="images/thumb-6.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<li class="last">
-			<h3>Lorem simply</h3>
-			<img src="images/thumb-4.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<a href="#">View all</a>
-		</ul>
-		<div class="clear"> </div>
+		<div class="gallery">
+			<ul>
+					<li><a href="images/g1.jpg"><img src="images/g1.jpg" alt="" /></a></li>
+					<li><a href="images/g2.jpg"><img src="images/g2.jpg" alt="" /></a></li>
+					<li><a href="images/g3.jpg"><img src="images/g3.jpg" alt="" /></a></li>
+					<li><a href="images/g4.jpg"><img src="images/g4.jpg" alt="" /></a></li>
+					<li><a href="images/g5.jpg"><img src="images/g5.jpg" alt="" /></a></li>
+					<li><a href="images/g6.jpg"><img src="images/g6.jpg" alt="" /></a></li>
+					<li><a href="images/g7.jpg"><img src="images/g7.jpg" alt="" /></a></li>
+					<li><a href="images/g8.jpg"><img src="images/g8.jpg" alt="" /></a></li>
+					<li><a href="images/g9.jpg"><img src="images/g9.jpg" alt="" /></a></li>
+					<li><a href="images/g10.jpg"><img src="images/g10.jpg" alt="" /></a></li>
+					<li><a href="images/g11.jpg"><img src="images/g11.jpg" alt="" /></a></li>
+					<li><a href="images/g12.jpg"><img src="images/g12.jpg" alt="" /></a></li>
+					<li><a href="images/g13.jpg"><img src="images/g13.jpg" alt="" /></a></li>
+					<li><a href="images/g14.jpg"><img src="images/g14.jpg" alt="" /></a></li>
+					<li><a href="images/g1.jpg"><img src="images/g1.jpg" alt="" /></a></li>
+				<div class="clear"></div></ul>
+		</div>
+	<div class="clear"> </div>
 	</div>
 	<div class="boxes">
 		<div class="order">
@@ -134,9 +110,13 @@ include 'session.php';
 		<div class="clear"> </div>
 		<ul>
 			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Monday - Friday &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Saturaday - Sunday &nbsp;&nbsp; 07 am - 02 pm</p>			
+			<h3>Horário de Funcionamento</h3>
+			<h4>Breakfast </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+			<h4>Lunch </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
 		</li>
 		<li>
 			<h3>Notícias e Eventos</h3>
@@ -175,7 +155,6 @@ include 'session.php';
 				<div class="footer-grid1">
 					<h3>SUA CONTA</h3>
 					<ul>
-						
 						<li><a href="contageral.php">Geral</a></li>
 
 					</ul>
@@ -187,7 +166,7 @@ include 'session.php';
 						<li><a href=""><img src="images/twitter.png" title="twitter"></a></li>
 						<li><a href=""><img src="images/rss.png" title="rss"></a></li>
 					</ul>
-				</div>
+			</div>
 			</div>
 			<div class="clear"> </div>
 			<div class="copy">
