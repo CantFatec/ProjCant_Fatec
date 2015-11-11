@@ -1,11 +1,11 @@
-﻿<!--
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
-/*session_start();
+session_start();
 include('php/funcoes.php');
 if(!empty($_POST["login"]) && !empty($_POST["senha"])){
 	$login = $_POST["login"];
@@ -14,9 +14,7 @@ if(!empty($_POST["login"]) && !empty($_POST["senha"])){
 }
 if(isset($_GET['logout'])) {
 	logout();
-}*/
-include 'session.php';
-
+}
 if(isset($_GET['acao']) && $_GET['acao'] == 'excluir'){
 	$identifica = $_GET['id_user'];
 	conectar();
@@ -47,40 +45,26 @@ if(isset($_POST['alter_user'])){
 </head>
 <body>
 <div class="wrap">
-	<div class="top-head">
-		<div class="welcome">Welcome To <span>Food Point</span></div>
-		
-	    <div class="clear"> </div>
-    </div>
-	<div class="header">
-	<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
-    <div class="search">
-    <?php if(empty($_SESSION['login_adm'])){ ?>
-			    <form method="POST">
-			    	<input type="text" name="login" placeholder="LOGIN"/>
-			    	<br>
-			    	<input type="password" name="senha" placeholder="SENHA"/>
-			    	<br>
-			    	<input type="submit" value="Logar" />
-			    </form>    
-		    <?php }else{ ?>
-		    	<form method="GET">
-				    Bem Vindo, <?php echo $_SESSION['login_adm']; ?> !
-				    <input type="submit" value="Sair" name="logout" />
-				</form>
-		    <?php } ?>
-    </div>
-    <div class="clear"> </div>
-	</div>
-	<div class="nav">
-        <?php include 'menu.php'; ?>
-	</div>
+	<?php include 'header.php'; ?>
+	<?php include 'menu.php'; ?>
+	
 	<div class="main-body">
+	<div id="slider">
+			<a href="#" target="_blank">
+				<img src="images/slider-1.jpg" alt="Mini Ninjas" />
+			</a>
+			<a href="#" target="_blank">
+				<img src="images/slider-2.jpg" alt="Price of Persia" />
+			</a>
+			<a href="#" target="_blank">
+				<img src="images/slider-3.jpg" alt="Price of Persia" />
+			</a>
+	</div>
 	<div clas="clear"> </div>
 	<div class="grids">
 		<ul>
 			<h4>Página do Administrador</h4>
-				<p>
+						<p>
 				<form method="GET">
 					<select name="tipo_busca">
 						<option value="is_cliente">Cliente</option>
@@ -100,36 +84,26 @@ if(isset($_POST['alter_user'])){
 						else if($filtro == "produtos") $tb = "produtos";
 						$sql = "select * from $tb where $filtro = '1'";
 						$mysql_query = mysql_query($sql);
-						if(count($mysql_query)>0){?>
-							<form id="form1" name="form1" method="post" action="adm.php">
-								<input name="nome_filtro" type="text" placeholder="Nome" id="nome" size="12"/>
-								<input name="cpf_filtro" type="text" placeholder="CPF" id="cpf" size="12"/>
-								<input name="telefone_filtro" type="text" placeholder="Telefone" id="tel" size="12"/>
-								<input name="email_filtro" type="text" placeholder="Email" id="email" size="12"/>
-								<input type="submit" name="botao_filtro" id="bt_filtro" value="Filtrar" />
-								<input type="reset" name="botao_filtro" id="bt_filtro_reset" value="Limpar" />
-							</form>
-								
-							<?php while($resultado = mysql_fetch_row($mysql_query)){			
+						if(count($mysql_query)>0){
+							while($resultado = mysql_fetch_row($mysql_query)){			
 								$id_user = $resultado[0];
 								$nome_user = $resultado[1];
 								$cpf = $resultado[2];
 								$telefone = $resultado[3];
 								$email = $resultado[4];
-				?>
-								<form name="<?php echo $id_user; ?>" method="GET">
-									<div class="acoes">
-									<?php $href_excluir="?acao=excluir&id_user=$id_user&reg=$filtro"; ?>
-									<?php $href_alterar="?acao=editar&id_user=$id_user&reg=$filtro"; ?>		
-								
-								     	
-									<h3>
-										<?php echo $id_user." || ".$nome_user." || ".$cpf." || ".$telefone." || ".$email; ?>
-										<a href="<?php echo $href_excluir ?>">Excluir</a>
-										<a href="<?php echo $href_alterar ?>">Alterar</a>
-									</h3>
-								</div>
-								</form>
+						?>
+				<form name="<?php echo $id_user; ?>" method="GET">
+				      	<div class="acoes">
+				      		<?php $href_excluir="?acao=excluir&id_user=$id_user&reg=$filtro"; ?>
+		      				<?php $href_alterar="?acao=editar&id_user=$id_user&reg=$filtro"; ?>
+				        	
+								<h3>
+				        		<?php echo $id_user." || ".$nome_user." || ".$cpf." || ".$telefone." || ".$email; ?>
+									<a href="<?php echo $href_excluir ?>">Excluir</a>
+									<a href="<?php echo $href_alterar ?>">Alterar</a>
+								</h3>
+				        </div>
+				</form>
 				<?php }}mysql_close(); }
 
 				else if (isset($_GET['acao']) && $_GET['acao'] == 'editar'){ 
@@ -208,8 +182,8 @@ if(isset($_POST['alter_user'])){
 		<div class="order">
 		<ul>
 			<li>
-			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
+			<h3>ORDER</h3>
+			<h4>No Products</h4>
 			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
 			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
 			<h5>Pricee and tax-include</h5>
@@ -221,10 +195,22 @@ if(isset($_POST['alter_user'])){
 		<div class="clear"> </div>
 		<ul>
 			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sábado &nbsp;&nbsp; 07 am - 02 pm</p>
-		</li>		
+			<h3>Restaurants Hours</h3>
+			<h4>Breakfast </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+			<h4>Lunch </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+		</li>
+		<li>
+			<h3>News And Events</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+			<h3>Lorem Ipsum is simply</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+		</li>
 			<div class="clear"> </div>
 		</ul>
 	</div>

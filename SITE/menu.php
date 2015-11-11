@@ -2,6 +2,7 @@
         <ul>
 <?php // COMENTÁRIO: Aqui ficam as páginas para TODOS os usuários ?>
             <li class="active"><a href="index.php">Home</a></li>
+	    <li><a href="#">Menu</a></li>
 <?php // FIM_paginaTodosUsuarios ?>           
 
             <?php if (isset($_SESSION['login_adm'])){ 
@@ -25,8 +26,8 @@
 
 					else if ($_SESSION['is_cliente'] == 1){ ?>
 <?php // COMENTÁRIO: Aqui ficam as páginas exibidas para os CLIENTES LOGADOS ?>
-     	  					<li><a href="contact.php">Fale Conosco</a></li>
-						<li><a href="gallery.php">Cardápio</a></li>
+     	  					<li><a href="contact.php">Contato</a></li>
+						<li><a href="gallery.php">Galeria</a></li>
 						<li><a href="cliente.php">Meu Cadastro</a></li>
 <?php // FIM_paginaClientesLogados ?>			
             	
@@ -47,9 +48,9 @@
 else { ?>
 
 <?php // COMENTÁRIO: Aqui ficam as páginas exibidas SOMENTE para quem não estiver logado ?>
-						<li><a href="cadastro.php">Fazer Cadastro</a></li>
-       	  					<li><a href="contact.php">Fale Conosco</a></li>
-						<li><a href="gallery.php">Cardápio</a></li>
+						<li><a href="cadastro.php">Cadastro</a></li>
+       	  					<li><a href="contact.php">Contato</a></li>
+						<li><a href="gallery.php">Galeria</a></li>
 <?php // FIM_paginaSomenteNaoLogados ?>
 <?php } ?>
 

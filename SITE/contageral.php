@@ -1,7 +1,14 @@
 <?php
-
-include 'session.php';
-
+session_start();
+include('php/funcoes.php');
+if(!empty($_POST["login"]) && !empty($_POST["senha"])){
+	$login = $_POST["login"];
+	$senha = $_POST["senha"];
+	logar($login,$senha);
+}
+if(isset($_GET['logout'])) {
+	logout();
+}
 ?>
 <!--
 Author: W3layouts
@@ -12,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Cantina Fatec Praia Grande | Galeria</title>
+<title>Cantina Fatec Praia Grande | Conta Geral</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -28,9 +35,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 <div class="wrap">
-		<?php include 'header.php'; ?>
-        <?php include 'menu.php'; ?>
-    
+	<?php include 'header.php'; ?>
+	<?php include 'menu.php'; ?>
+	
 	<div class="main-body">
 	<div class="grids">
 		<div class="gallery">
@@ -71,9 +78,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="clear"> </div>
 		<ul>
 			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sabádo &nbsp;&nbsp; 7 am - 02 pm</p>			
+			<h3>Horário de Funcionamento</h3>
+			<h4>Breakfast </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+			<h4>Lunch </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
 		</li>
 		<li>
 			<h3>Notícias e Eventos</h3>

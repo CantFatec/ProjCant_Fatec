@@ -1,13 +1,25 @@
-﻿<!--
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
-
-include 'session.php';
-
+session_start();
+include('php/funcoes.php');
+if(!empty($_POST["login"]) && !empty($_POST["senha"])){
+	$login = $_POST["login"];
+	$senha = $_POST["senha"];
+	logar($login,$senha);
+}
+if(isset($_GET['logout'])) {
+	logout();
+}
+if(isset($_POST['cad_user'])){
+	if($_POST['senha1'] === $_POST['senha2']){
+		cadastrarUsuario();
+	}
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -29,7 +41,17 @@ include 'session.php';
 	<?php include 'menu.php'; ?>
 	
 	<div class="main-body">
-	
+	<div id="slider">
+			<a href="#" target="_blank">
+				<img src="images/slider-1.jpg" alt="Mini Ninjas" />
+			</a>
+			<a href="#" target="_blank">
+				<img src="images/slider-2.jpg" alt="Price of Persia" />
+			</a>
+			<a href="#" target="_blank">
+				<img src="images/slider-3.jpg" alt="Price of Persia" />
+			</a>
+	</div>
 	<div clas="clear"> </div>
 	<div class="grids">
 		<ul>
@@ -89,7 +111,7 @@ include 'session.php';
 		<ul>
 			<li>
 			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
+			<h4>No Products</h4>
 			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
 			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
 			<h5>Pricee and tax-include</h5>
@@ -101,10 +123,22 @@ include 'session.php';
 		<div class="clear"> </div>
 		<ul>
 			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 11 am - 03 pm</p>
-			<p>Sábado &nbsp;&nbsp; 11 am - 04 pm</p>			
-		</li>		
+			<h3>Horário de Funcionamento</h3>
+			<h4>Breakfast </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+			<h4>Lunch </h4>
+			<p>Monday - Friday &nbsp;&nbsp; 11 am - 03 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 11 am - 04 pm</p>
+		</li>
+		<li>
+			<h3>Notícias e Eventos</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+			<h3>Lorem Ipsum is simply</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+		</li>
 			<div class="clear"> </div>
 		</ul>
 	</div>

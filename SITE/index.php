@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -26,7 +26,17 @@ include 'session.php';
 	<?php include 'header.php'; ?>
 	<?php include 'menu.php'; ?>
 	<div class="main-body">
-	
+	<div id="slider">
+			<a href="#" target="_blank">
+				<img src="images/slider-1.jpg" alt="Mini Ninjas" />
+			</a>
+			<a href="#" target="_blank">
+				<img src="images/slider-2.jpg" alt="Price of Persia" />
+			</a>
+			<a href="#" target="_blank">
+				<img src="images/slider-3.jpg" alt="Price of Persia" />
+			</a>
+	</div>
 	<div class="grids">
 		<ul>
 			<h4>Itens mais pedidos</h4>
@@ -40,13 +50,13 @@ include 'session.php';
 			<h3>Lorem Ipsum</h3>
 			<img src="images/thumb-2.jpg">
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<button>$12.58</button>
 		</li>
 		<li>
 			<h3>Ipsum simply</h3>
 			<img src="images/thumb-3.jpg">
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<button>$12.58</button>
 		</li>
 		<a href="#">View all</a>
 		<div class="clear"> </div>
@@ -56,19 +66,19 @@ include 'session.php';
 			<h3>Ipsum simply</h3>
 			<img src="images/thumb-5.jpg">
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<button>$12.58</button>
 		</li>
 		<li>
 			<h3> Lorem Ipsum</h3>
 			<img src="images/thumb-6.jpg">
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<button>$12.58</button>
 		</li>
 		<li class="last">
 			<h3>Lorem simply</h3>
 			<img src="images/thumb-4.jpg">
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<button>$12.58</button>
 		</li>
 		<a href="#">View all</a>
 		</ul>
@@ -79,7 +89,7 @@ include 'session.php';
 		<ul>
 			<li>
 			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
+			<h4>No Products</h4>
 			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
 			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
 			<h5>Pricee and tax-include</h5>
@@ -92,9 +102,17 @@ include 'session.php';
 		<ul>
 			<li>
 			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sábado &nbsp;&nbsp; 07 am - 02 pm</p>			
-		</li>		
+			<p>Monday - Friday &nbsp;&nbsp; 07 am - 10 pm</p>
+			<p>Saturaday - Sunday &nbsp;&nbsp; 07 am - 02 pm</p>			
+		</li>
+		<li>
+			<h3>Notícias e Eventos</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+			<h3>Lorem Ipsum is simply</h3>
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>Read more</button>
+		</li>
 		<div class="clear"> </div>
 		</ul>
 	</div>

@@ -108,22 +108,6 @@ function alterarUsuario(){
 
 }
 
-function contato($remetente,$email,$assunto,$mensagem){
-
-	$destinatario = "gabrielparolis@gmail.com";
-	$headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'From: $remetente <$email>';
-    echo "teste";
-
-	$enviou = mail($destinatario,$assunto,$mensagem,$headers);
-	if($enviou){
-		echo "<script>alert('Obrigado Pelo Contato :)');location.href='index.php';</script>";
-	}else{
-		echo "<script> alert('Falha ao enviar!');location.reload();</script>";
-	}
-}
-
 /*
 
 function cadastrarProduto($nome,$img,$desc,$qtde,$valor){

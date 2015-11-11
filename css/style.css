@@ -85,6 +85,14 @@ body{
 	color: #5E5E5E;
 }
 
+.search input[name="botao_filtro"]{
+	background: none;
+	padding:2px 5px;
+	border: none;
+	outline: none;
+	color: #5E5E5E;
+}
+
 .search input[type="submit"]{
 	background: none;
 	padding:2px 5px;
@@ -107,6 +115,7 @@ body{
 	margin-top:25px;
 }
 .logo{
+	margin-top: 25px;
 	float: left;
 }
 .logo a{
@@ -124,7 +133,7 @@ body{
 	border-right:1px solid #000; 
 }
 .nav li a {
-	color:#867070;
+	color:#777777;
 	font-size:11px;
 	display:block;
 	padding:10px 45px;
@@ -262,7 +271,7 @@ body{
 .footer-grid1 a{
 	text-decoration: none;
 	font-size: 12px;
-	color: #867070;
+	color: #777777;
 	text-transform: none;
 	line-height: 2;
 }
@@ -317,11 +326,41 @@ body{
 	outline: none;
 	font-family: 'Istok Web', sans-serif;
 }
+
+.grids input[name="nome_filtro"], input[name="cpf_filtro"],input[name="email_filtro"],input[name="telefone_filtro"]{
+	width:114px;
+	padding:8px;
+	font-size:16px;
+	color:#333;
+	background:#eee;
+	box-shadow: 0 0 6px #aaa;
+	border:none;
+	outline: none;
+	font-family: 'Istok Web', sans-serif;
+	font-size: 12px;
+	display:inline;
+}
+
 .grids input[type="reset"]:focus{
 	background:#2E1A19;
 	color: #fff;
 	width:100px;
 	padding:15px 8px;
+	font-size:16px;
+	background:#333;
+	border:none;
+	font-size:14px;
+	color:#fff;
+	cursor:pointer;
+	font-family: 'Istok Web', sans-serif;
+	-webkit-border-radius:.3em;
+	   -moz-border-radius:.3em;
+	        border-radius:.3em;
+}
+.grids input[id="bt_filtro_reset"]:focus{
+	width:80px;
+	height:30px;
+	padding:6px 8px;
 	font-size:16px;
 	background:#333;
 	border:none;
@@ -343,7 +382,19 @@ body{
 	border:none;
 	outline: none;
 	font-family: 'Istok Web', sans-serif;
-}
+}	
+.grids input[name="nome_filtro"]:focus,input[name="cpf_filtro"]:focus,input[name="cpf_filtro"]:focus,input[name="telefone_filtro"]:focus,input[name="email_filtro"]:focus{
+	width:114px;
+	padding:8px;
+	font-size:12px;
+	color:#333;
+	background:#eee;
+	box-shadow: 0 0 6px #00FF00;
+	border:none;
+	outline: none;
+	font-family: 'Istok Web', sans-serif;
+}	
+
 .grids input[type="submit"],input[type="reset"]{
 	width:100px;
 	padding:15px 8px;
@@ -358,9 +409,30 @@ body{
 	   -moz-border-radius:.3em;
 	        border-radius:.3em;
 }
+
+.grids input[name="botao_filtro"]{
+	width:80px;
+	height:30px;
+	padding:6px 8px;
+	font-size:16px;
+	background:#333;
+	border:none;
+	font-size:14px;
+	color:#fff;
+	cursor:pointer;
+	font-family: 'Istok Web', sans-serif;
+	-webkit-border-radius:.3em;
+	   -moz-border-radius:.3em;
+	        border-radius:.3em;
+}
 .grids input[type="reset"]{
 	margin-left: 38%;
 }
+
+.grids input[id="bt_filtro_reset"]{
+	margin-left: 0%;
+}
+
 .grids input[type="submit"]:hover,input[type="reset"]:hover{
 	background:#2E1A19;
 	color: #fff;

@@ -1,14 +1,7 @@
 <?php
-session_start();
-include('php/funcoes.php');
-if(!empty($_POST["login"]) && !empty($_POST["senha"])){
-	$login = $_POST["login"];
-	$senha = $_POST["senha"];
-	logar($login,$senha);
-}
-if(isset($_GET['logout'])) {
-	logout();
-}
+
+include 'session.php';
+
 ?>
 <!--
 Author: W3layouts
@@ -19,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Cantina Fatec Praia Grande | Conta Geral</title>
+<title>Cantina Fatec Praia Grande | Galeria</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,41 +28,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 <div class="wrap">
-	<div class="top-head">
-		<div class="welcome">Welcome To <span>Food Point</span></div>
-		<div class="top-nav">
-	       <ul>
-	            <li class="active"><a href="index.php">Home</a></li>	            
-	            <li><a href="cadastro.php">Cadastro</a></li>
-		    <li><a href="gallery.php">Galeria</a></li>
-	            <li><a href="contact.php">Contato</a></li>
-	        </ul>
-	    </div>
-	    <div class="clear"> </div>
-    </div>
-	<div class="header">
-	<div class="logo"><a href="index.php"><img src="images/logo.png"  alt="Flowerilla"/></a></div>
-    <div class="search">
-    	<?php if(empty($_SESSION['login_adm'])){ ?>
-			    <form method="POST">
-			    	<input type="text" name="login" placeholder="LOGIN"/>
-			    	<br>
-			    	<input type="password" name="senha" placeholder="SENHA"/>
-			    	<br>
-			    	<input type="submit" value="Logar" />
-			    </form>    
-		    <?php }else{ ?>
-		    	<form method="GET">
-				    Bem Vindo, <?php echo $_SESSION['login_adm']; ?> !
-				    <input type="submit" value="Sair" name="logout" />
-				</form>
-		    <?php } ?>
-    </div>
-    <div class="clear"> </div>
-	</div>
-	<div class="nav">
+		<?php include 'header.php'; ?>
         <?php include 'menu.php'; ?>
-    </div>
+    
 	<div class="main-body">
 	<div class="grids">
 		<div class="gallery">
@@ -132,53 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="clear"> </div>
     </div>
 </div>
-<div class="footer1">
-	<div class="wrap">
-			<div class="footer-grids">
-				<div class="footer-grid1">
-					<h3>INFORMAÇÕES</h3>
-					<ul>
-						<li><a href="">Nossa Loja</a></li>
-						<li><a href="sobre.php">Sobre</a></li>
-					</ul>
-				</div>
-				<div class="footer-grid1">
-					<h3>NOSSAS OFERTAS</h3>
-					<ul>
-						<li><a href="">Especiais</a></li>
-						<li><a href="">Novos Produtos</a></li>
-						<li><a href="">Mais vendidos</a></li>
-						<li><a href="">Fábricas</a></li>
-						<li><a href="">Fornecedores</a></li>
-					</ul>
-				</div>
-				<div class="footer-grid1">
-					<h3>SUA CONTA</h3>
-					<ul>
-						<li><a href="contageral.php">Geral</a></li>
-
-					</ul>
-				</div>
-				<div class="footer-grid2">
-					<h3>SIGA-NOS</h3>
-					<ul>
-						<li><a href=""><img src="images/facebook.png" title="facebook"/></a></li>
-						<li><a href=""><img src="images/twitter.png" title="twitter"></a></li>
-						<li><a href=""><img src="images/rss.png" title="rss"></a></li>
-					</ul>
-			</div>
-			</div>
-			<div class="clear"> </div>
-			<div class="copy">
-    	<p>&copy; 2013 rights Reseverd | Design by <a href="http://w3layouts.com">W3Layouts.com</a></p>
-    </div>
-    </div>
-			<div class="clear">
-			</div>
-		</div>
-<script>
-			$('#slider').coinslider();
-		</script>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

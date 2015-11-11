@@ -1,6 +1,6 @@
 <?php
 function conectar(){
-	$server = "localhost";
+	$server = "mysql.hostinger.com.br";
 	$username = "u168415392_root";
 	$password = "cantfatec2015";
 
@@ -14,19 +14,17 @@ function conectar(){
 				 }
 }
 
-function logar($login,$senha_hash){
+function logar($login,$senha){
 	conectar();
-	$sql = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha_hash.'"';
+	$sql = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha.'"';
 	$consulta = mysql_query($sql);
 	if(count($consulta)>0){
 		while($usuario = mysql_fetch_row($consulta)){			
 			$_SESSION['login'] = $usuario[0];
 			$_SESSION['login_adm'] = $usuario[1];
+			$_SESSION['senha'] = $usuario[2];
 			$_SESSION['cpf'] = $login;
-			$_SESSION['senha'] = $senha_hash;
-			$_SESSION['is_funcionario'] = $usuario[6];
-			$_SESSION['is_cliente'] = $usuario[7];
-			$_SESSION['is_administrador'] = $usuario[8];			
+			$cpf = $usuario[2];
 			$_SESSION['logado']=1;
 		}
 	}
@@ -106,22 +104,6 @@ function alterarUsuario(){
 			 }
 	mysql_close();
 
-}
-
-function contato($remetente,$email,$assunto,$mensagem){
-
-	$destinatario = "gabrielparolis@gmail.com";
-	$headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'From: $remetente <$email>';
-    echo "teste";
-
-	$enviou = mail($destinatario,$assunto,$mensagem,$headers);
-	if($enviou){
-		echo "<script>alert('Obrigado Pelo Contato :)');location.href='index.php';</script>";
-	}else{
-		echo "<script> alert('Falha ao enviar!');location.reload();</script>";
-	}
 }
 
 /*
