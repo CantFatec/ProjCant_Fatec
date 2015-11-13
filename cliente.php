@@ -20,7 +20,7 @@ if(isset($_POST['alter_user'])){
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>The Free Food-Point for Website Template | About :: w3layouts</title>
+<title>Cantina Fatec Praia Grande | Cliente</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
@@ -40,8 +40,7 @@ if(isset($_POST['alter_user'])){
 	<?php include 'menu.php'; ?>
 	
 	<div class="main-body">
-	
-	<div clas="clear"> </div>
+	<?php include 'menulateral.php'; ?>
 	<div class="grids">
 		<ul>
 			<h4>Meu Cadastro</h4>
@@ -135,6 +134,7 @@ if(isset($_POST['alter_user'])){
 						<input type="reset" value="LIMPAR" /><br><br>
 					</form>
 				<?php mysql_close();} ?>
+				
 			</p>
 		<div class="clear"> </div>
 		<br>
@@ -147,6 +147,7 @@ if(isset($_POST['alter_user'])){
 	<div class="clear"> </div>
    </div>
 </div>
+
 <?php include 'footer.php'; ?>
 
 </body>

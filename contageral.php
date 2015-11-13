@@ -31,31 +31,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<?php include 'header.php'; ?>
 	<?php include 'menu.php'; ?>
 	
-	<div class="main-body">
+	<div class="main-body">	
+	<?php include 'menulateral.php'; ?>
 	
-	<div class="boxes">
-		<div class="order">
-		<ul>
-			<li>
-			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
-			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
-			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
-			<h5>Pricee and tax-include</h5>
-			<h6><a href="#">Check-out</a></h6>
-			<h6><a href="#">cart</a></h6>
-		</li>
-		</ul>
-		</div>
-		<div class="clear"> </div>
-		<ul>
-			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sábado &nbsp;&nbsp; 11 am - 02 pm</p>			
-		</li>		
-		<div class="clear"> </div>
-		</ul>
+	<div class="titulo">
+	<h1>Conta Geral</h1>
+	<br>
+	</div>
+	<div class="order1">
+	<form>
+	<h3>Alterar Senha</h3>
+	<br>
+	<a href="alterarsenha.php">Alterar</a>
+	</form>
+	<br>
+	<form>
+	<h3>Pedidos</h3>
+	<br>
+	<a href="historicocompras.php">Histórico</a>
+	<a href="statuspedido.php">Acompanhar Status</a>
+	</form>
+	<br>
+	<form>
+	<h3>Alterar Senha</h3>
+	<br>
+	<a href="#">Alterar</a>
+	</form>
+	<br>
+	<form>
+	<h3>Alterar Senha</h3>
+	<br>
+	<a href="#">Alterar</a>
+	</form>
+	<br>
+	
+	
 	</div>
 	<div class="clear"> </div>
     </div>

@@ -54,38 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	<div class="clear"> </div>
 	</div>
-	<div class="boxes">
-		<div class="order">
-		<ul>
-			<li>
-			<h3>PEDIDO</h3>
-			<h4>No Products</h4>
-			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
-			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
-			<h5>Pricee and tax-include</h5>
-			<h6><a href="#">Check-out</a></h6>
-			<h6><a href="#">cart</a></h6>
-		</li>
-		</ul>
-		</div>
-		<div class="clear"> </div>
-		<ul>
-			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sabádo &nbsp;&nbsp; 7 am - 02 pm</p>			
-		</li>
-		<li>
-			<h3>Notícias e Eventos</h3>
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>Read more</button>
-			<h3>Lorem Ipsum is simply</h3>
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>Read more</button>
-		</li>
-		<div class="clear"> </div>
-		</ul>
-	</div>
+	<?php include 'menulateral.php'; ?>
 	<div class="clear"> </div>
     </div>
 </div>

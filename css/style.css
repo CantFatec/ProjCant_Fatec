@@ -133,7 +133,7 @@ body{
 	border-right:1px solid #000; 
 }
 .nav li a {
-	color:#777777;
+	color:#B5B5B5;
 	font-size:11px;
 	display:block;
 	padding:10px 45px;
@@ -146,6 +146,10 @@ body{
 .main-body{
 	background: #fff;
 	padding:12px 12px;
+}
+.titulo h1{
+font-size:40px;
+/*text-weigth:bold;*/
 }
 .content{
 	float:left;
@@ -164,6 +168,18 @@ body{
 	height: 2px;
 	margin: 20px 0;
 	background: url('../images/div.png') repeat-x;
+}
+.descricao textarea{
+	width:450px;
+	padding:8px;
+	font-size:16px;
+	color:#333;
+	background:#eee;
+	box-shadow: 0 0 6px #aaa;
+	border:none;
+	outline: none;
+	resize:none;
+	font-family: 'Istok Web', sans-serif;
 }
 /*--grids--*/
 .grids{
@@ -193,11 +209,11 @@ body{
 .grids li:first-child{
 	margin-left: 0;
 }
-.grids li.last{
+/*.grids li.last{
 	margin-right: 0;
-}
+}*/
 .grids h3{
-	color: #0CA38B;
+	color: #000;
 	padding: 10px 0 10px 0;
 	background: #fff;
 	font-size: 13px;
@@ -236,15 +252,14 @@ body{
 .grids a{
 	float: right;
 	font-size: 12px;
-	margin:0px 8px 10px 0px;
 	font-family: 'Libre Baskerville', serif;
-	text-transform:normal;
-	background-color: #0CA38B;
+	text-transform:normal;	
 	padding:5px 7px;
-	color:#fff;
+	text-decoration: none;
+	color:#000;
 }
 .grids a:hover{
-	text-decoration:underline;
+	text-decoration:none;
 }
 /*footer*/
 .footer1{
@@ -317,6 +332,17 @@ body{
 
 .grids input,select{
 	width:450px;
+	padding:8px;
+	font-size:16px;
+	color:#333;
+	background:#eee;
+	box-shadow: 0 0 6px #aaa;
+	border:none;
+	outline: none;
+	font-family: 'Istok Web', sans-serif;
+}
+.grids select[name="tipo_produto"]{
+	width:465px;
 	padding:8px;
 	font-size:16px;
 	color:#333;
@@ -478,6 +504,31 @@ body{
 	float:right;
 }
 .order li a:hover{
+	text-decoration:underline;
+}
+/*contageral*/
+.order1 h3{
+	color: #fff;
+	padding: 10px 0 10px 10px;
+	background: white;
+	font-size: 13px;
+	text-align: center;
+	font-family: 'Libre Baskerville', serif;
+	text-transform: uppercase;
+	background: url(../images/nav-bg.jpg);
+	width:680px;
+}
+.order1 a{
+	font-size: 13px;
+	margin: 0px 8px 10px 0px;
+	font-family: 'Libre Baskerville', serif;
+	text-transform: normal;
+	background-color: #0CA38B;
+	padding: 10px 10px;
+	color: white;
+	margin-top:20px;
+}
+.order1 a:hover{
 	text-decoration:underline;
 }
 /*--boxes--*/

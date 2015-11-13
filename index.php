@@ -37,21 +37,21 @@ include 'session.php';
 			<button>R$10</button>
 		</li>
 		<li>
-			<h3>Lorem Ipsum</h3>
+			<h3>Prato feito Filé de Frango Grelhado</h3>
 			<img src="images/thumb-2.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
+			<button>R$10</button>
 		</li>
 		<li>
-			<h3>Ipsum simply</h3>
+			<h3>Paqueca (Frango, Carne, Presunto e queijo)</h3>
 			<img src="images/thumb-3.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>R$12.58</button>
+			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
+			<button>R$10</button>
 		</li>
-		<a href="#">View all</a>
+		<a href="maisvendidos.php">Veja todos</a>
 		<div class="clear"> </div>
 		
-		<h4>Latest-Items</h4>
+		<h4>Novos Pratos</h4>
 		<li>
 			<h3>Ipsum simply</h3>
 			<img src="images/thumb-5.jpg">
@@ -70,34 +70,11 @@ include 'session.php';
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
 			<button>R$12.58</button>
 		</li>
-		<a href="#">View all</a>
+		<a href="novosprodutos.php">Veja todos</a>
 		</ul>
 		<div class="clear"> </div>
 	</div>
-	<div class="boxes">
-		<div class="order">
-		<ul>
-			<li>
-			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
-			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
-			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
-			<h5>Pricee and tax-include</h5>
-			<h6><a href="#">Check-out</a></h6>
-			<h6><a href="#">cart</a></h6>
-		</li>
-		</ul>
-		</div>
-		<div class="clear"> </div>
-		<ul>
-			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sábado &nbsp;&nbsp; 07 am - 02 pm</p>			
-		</li>		
-		<div class="clear"> </div>
-		</ul>
-	</div>
+	<?php include 'menulateral.php'; ?>
 	<div class="clear"> </div>
     </div>
 </div>

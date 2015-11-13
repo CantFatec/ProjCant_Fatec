@@ -18,6 +18,7 @@
 
 <?php // COMENTÁRIO: Aqui ficam as páginas exibidas para os ADMINISTRADORES ?>
 						<li><a href="cadastro.php">Cadastro de Usuários</a></li>
+						<li><a href="cadastro_prod.php">Cadastro de Produtos</a></li>
 						<li><a href="adm.php">Administração</a></li>	
 <?php // FIM_paginaAdministradores	?>	
             	
@@ -35,7 +36,7 @@
 					else if ($_SESSION['is_funcionario'] == 1){ ?>
 
 <?php // COMENTÁRIO: Aqui ficam as páginas exibidas para os FUNCIONARIOS ?>
-						<li><a href="pedidos.php">Administrar Pedidos</a></li>		
+						<li><a href="admpedidos.php">Administrar Pedidos</a></li>		
 <?php // FIM_paginaFuncionarios	?>	
 							
             	

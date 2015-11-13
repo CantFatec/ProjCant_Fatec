@@ -32,31 +32,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<?php include 'menu.php'; ?>
 	
 	<div class="main-body">
-	
-	<div class="boxes">
-		<div class="order">
+	<div class="grids">
 		<ul>
-			<li>
-			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
-			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
-			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
-			<h5>Pricee and tax-include</h5>
-			<h6><a href="#">Check-out</a></h6>
-			<h6><a href="#">cart</a></h6>
+			<h4>Novos Pratos</h4>
+		<li>
+			<h3>Prato feito Bife sem cebola</h3>
+			<img src="images/thumb-1.jpg">
+			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
+			<button>R$10</button>
 		</li>
-		</ul>
-		</div>
+		<li>
+			<h3>Prato feito Filé de Frango Grelhado</h3>
+			<img src="images/thumb-2.jpg">
+			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
+			<button>R$10</button>
+		</li>
+		<li>
+			<h3>Paqueca (Frango, Carne, Presunto e queijo)</h3>
+			<img src="images/thumb-3.jpg">
+			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
+			<button>R$10</button>
+		</li>
 		<div class="clear"> </div>
-		<ul>
-			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 07 am - 10 pm</p>
-			<p>Sábado &nbsp;&nbsp; 07 am - 02 pm</p>
-		</li>		
-		<div class="clear"> </div>
+
+		<li>
+			<h3>Ipsum simplydsadsadsads d</h3>
+			<img src="images/thumb-5.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>R$10</button>
+		</li>
+		<li>
+			<h3> Lorem Ipsum dsadsasdadsahdhujsa</h3>
+			<img src="images/thumb-6.jpg">
+			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
+			<button>R$10</button>
+		</li>
+		<li>
+			<h3>Paqueca (Frango, Carne, Presunto e queijo)</h3>
+			<img src="images/thumb-3.jpg">
+			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
+			<button>R$10</button>
+		</li>
+		
 		</ul>
+		<div class="clear"> </div>
 	</div>
+	<?php include 'menulateral.php'; ?>
 	<div class="clear"> </div>
     </div>
 </div>

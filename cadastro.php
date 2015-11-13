@@ -18,7 +18,7 @@ include 'session.php';
 <link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<?php include 'validacao.php'; ?>
+<script src="validacao.js"></script>
 
 <script type="text/javascript" src="js/slider.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
@@ -26,7 +26,10 @@ include 'session.php';
 <body>
 <div class="wrap">
 	<?php include 'header.php'; ?>
-	<?php include 'menu.php'; ?>
+	<?php
+		include 'menu.php';
+		if(isset($_POST['cad_user'])) cadastrarUsuario();
+	?>
 	
 	<div class="main-body">
 	
@@ -42,11 +45,12 @@ include 'session.php';
 				<br>
 					<input id="tel" onkeypress="mascara(this, telefone)" maxlength="15" name="tel" type="text" onBlur="ValidaTelefone(form1.tel);" placeholder="Telefone: (DDD) XXXX-XXXXX" required /> <br><div id="erros3" style="color:red"></div>
 				<br>
-					<input name="email"type="email" placeholder="E-Mail: EMAIL@DOMINIO.COM.BR" required /> <br><br>
+					<input name="email" type="email" placeholder="E-Mail: EMAIL@DOMINIO.COM.BR" required /> <br><br>
 					<input name="senha1" id="senha1" type="password" placeholder="SENHA" required/> <br><br>
 					<input id="senha2" name="senha2" type="password" onBlur="ValidaSenha(form1.senha2);" placeholder="CONFIRMAR SENHA" required/> <br><div id="erros4" style="color:red"></div><br>
 					<?php if(!empty($_SESSION['logado']) && ($_SESSION['is_administrador'] == 1)){ ?>
 						<select name="tipo_usuario">
+							<option value="" disabled selected hidden>Selecione um tipo</option>
 							<option value="cliente">Cliente</option>
 							<option value="funcionario">Funcionário</option>
 							<option value="administrador">Administrador</option>
@@ -55,7 +59,7 @@ include 'session.php';
 							<input type="hidden" name="tipo_usuario" value="cliente" />
 						<?php } ?>
 					<input type="hidden" name="cad_user" />
-					<input type="submit" value="CONFIRMAR" />
+					<input type="submit" id="confirma_cadastro" value="CONFIRMAR" />
 					<input type="reset" value="LIMPAR" /><br><br>
 				</form>
 			</p>
@@ -84,30 +88,7 @@ include 'session.php';
 		</ul>
 	<div class="clear"> </div>
 </div>
-	<div class="boxes">
-		<div class="order">
-		<ul>
-			<li>
-			<h3>PEDIDO</h3>
-			<h4>Sem Produtos</h4>
-			<p>shoping &nbsp;&nbsp;<span>$0:00</span></p>
-			<p>Total &nbsp;&nbsp;<span>$0:00</span></p>
-			<h5>Pricee and tax-include</h5>
-			<h6><a href="#">Check-out</a></h6>
-			<h6><a href="#">cart</a></h6>
-		</li>
-		</ul>
-		</div>
-		<div class="clear"> </div>
-		<ul>
-			<li>
-			<h3>Horário de Funcionamento</h3>			
-			<p>Segunda - Sexta &nbsp;&nbsp; 11 am - 03 pm</p>
-			<p>Sábado &nbsp;&nbsp; 11 am - 04 pm</p>			
-		</li>		
-			<div class="clear"> </div>
-		</ul>
-	</div>
+	<?php include 'menulateral.php'; ?>
 	<div class="clear"> </div>
    </div>
 </div>

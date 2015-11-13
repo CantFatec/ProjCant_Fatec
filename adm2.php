@@ -1,11 +1,11 @@
-<!--
+﻿<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
-session_start();
+/*session_start();
 include('php/funcoes.php');
 if(!empty($_POST["login"]) && !empty($_POST["senha"])){
 	$login = $_POST["login"];
@@ -14,7 +14,9 @@ if(!empty($_POST["login"]) && !empty($_POST["senha"])){
 }
 if(isset($_GET['logout'])) {
 	logout();
-}
+}*/
+include 'session.php';
+
 if(isset($_GET['acao']) && $_GET['acao'] == 'excluir'){
 	$identifica = $_GET['id_user'];
 	conectar();
@@ -24,12 +26,6 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'excluir'){
 }
 if(isset($_POST['alter_user'])){
 	alterarUsuario();
-}
-if(isset($_GET['ativaFiltro'])){
-	if($_GET['nome_filtro']!="")		$_SESSION['nome_filtro'] = $_GET['nome_filtro'];
-	if($_GET['cpf_filtro']!="")			$_SESSION['cpf_filtro'] = $_GET['cpf_filtro'];
-	if($_GET['telefone_filtro']!="")	$_SESSION['telefone_filtro'] = $_GET['telefone_filtro'];
-	if($_GET['email_filtro']!="")		$_SESSION['email_filtro'] = $_GET['email_filtro'];
 }
 ?>
 <!DOCTYPE HTML>
@@ -96,104 +92,53 @@ if(isset($_GET['ativaFiltro'])){
 					</select><br><br>
 				</form>
 				<?php 
-					if (isset($_GET['tipo_busca'])){?>
-						<form id="form1" name="form1" method="GET" action="adm.php">
+					if (isset($_GET['tipo_busca'])){
+						$filtro = $_GET['tipo_busca'];
+						$tb = "teste";
+						conectar();
+						if(($filtro == "is_administrador") || ($filtro == "is_funcionario") || ($filtro == "is_cliente")) $tb = "usuario";
+						else if($filtro == "produtos") $tb = "produtos";
+						$sql = "select * from $tb where $filtro = '1'";
+						$mysql_query = mysql_query($sql);
+						if(count($mysql_query)>0){?>
+							<form id="form1" name="form1" method="post" action="adm.php">
 								<input name="nome_filtro" type="text" placeholder="Nome" id="nome" size="12"/>
 								<input name="cpf_filtro" type="text" placeholder="CPF" id="cpf" size="12"/>
 								<input name="telefone_filtro" type="text" placeholder="Telefone" id="tel" size="12"/>
 								<input name="email_filtro" type="text" placeholder="Email" id="email" size="12"/>
-								<input type="hidden" name="ativaFiltro" />
 								<input type="submit" name="botao_filtro" id="bt_filtro" value="Filtrar" />
 								<input type="reset" name="botao_filtro" id="bt_filtro_reset" value="Limpar" />
 							</form>
-				
-						<table width="700" cellspacing="0" cellpadding="4" style="background-color: #fff;border:2px dotted #000;">
-							<tr>
-								<td width="90" bgcolor="#CCCCCC"><strong>ID</strong></td>
-								<td width="95" bgcolor="#CCCCCC"><strong>Nome</strong></td>
-								<td width="159" bgcolor="#CCCCCC"><strong>CPF</strong></td>
-								<td width="191" bgcolor="#CCCCCC"><strong>Telefone</strong></td>
-								<td width="113" bgcolor="#CCCCCC"><strong>Email</strong></td>
-								<td width="113" bgcolor="#CCCCCC"><strong>Alterar</strong></td>
-								<td width="113" bgcolor="#CCCCCC"><strong>Excluir</strong></td>
-							</tr>
-							
-						<?php
-						$filtro = $_GET['tipo_busca'];
-						$tb = "teste";
-						conectar();
-						if(($filtro == "is_administrador") || ($filtro == "is_funcionario") || ($filtro == "is_cliente")){
-							$tb = "usuario";							
-							$sql = "select * from $tb where $filtro = '1'";
-						}
-						$mysql_query = mysql_query($sql);
-						if((count($mysql_query)>0) && !isset($_SESSION['ativaFiltro'])){?>
-									
+								
 							<?php while($resultado = mysql_fetch_row($mysql_query)){			
 								$id_user = $resultado[0];
 								$nome_user = $resultado[1];
 								$cpf = $resultado[2];
 								$telefone = $resultado[3];
 								$email = $resultado[4];
-							?>
-							<tr>
-								<td><?php echo $id_user; ?></td>
-								<td><?php echo $nome_user; ?></td>
-								<td><?php echo $cpf; ?></td>
-								<td><?php echo $telefone; ?></td>
-								<td><?php echo $email; ?></td>
+				?>
 								<form name="<?php echo $id_user; ?>" method="GET">
 									<div class="acoes">
-										<?php $href_excluir="?acao=excluir&id_user=$id_user&reg=$filtro"; ?>
-										<?php $href_alterar="?acao=editar&id_user=$id_user&reg=$filtro"; ?>
-										<td><a href="<?php echo $href_alterar ?>">Alterar</a></td>
-										<td><a href="<?php echo $href_excluir ?>">Excluir</a></td>
-									</div>
-								</form>
-							</tr>
-							<?php
-							}
-						}else if(isset($_GET['ativaFiltro'])){
-								$tb = "usuario";							
-								$sql = "select * from $tb where $filtro = '1'";
-							?>
-							<?php while($resultado = mysql_fetch_row($mysql_query)){			
-									$id_user = $resultado[0];
-									$nome_user = $resultado[1];
-									$cpf = $resultado[2];
-									$telefone = $resultado[3];
-									$email = $resultado[4];
-								?>
-								<tr>
-								<td><?php echo $id_user; ?></td>
-								<td><?php echo $nome_user; ?></td>
-								<td><?php echo $cpf; ?></td>
-								<td><?php echo $telefone; ?></td>
-								<td><?php echo $email; ?></td>
-								<form name="<?php echo $id_user; ?>" method="GET">
-									<div class="acoes">
-										<?php $href_excluir="?acao=excluir&id_user=$id_user&reg=$filtro"; ?>
-										<?php $href_alterar="?acao=editar&id_user=$id_user&reg=$filtro"; ?>
-										<td><a href="<?php echo $href_alterar ?>">Alterar</a></td>
-										<td><a href="<?php echo $href_excluir ?>">Excluir</a></td>
-									</div>
-								</form>
-								</tr>
-						<?php
-								}
-							}
-						?>
-							</table>
-						
-						
+									<?php $href_excluir="?acao=excluir&id_user=$id_user&reg=$filtro"; ?>
+									<?php $href_alterar="?acao=editar&id_user=$id_user&reg=$filtro"; ?>		
 								
-				<?php mysql_close();
-					}else if (isset($_GET['acao']) && $_GET['acao'] == 'editar'){ 
+								     	
+									<h3>
+										<?php echo $id_user." || ".$nome_user." || ".$cpf." || ".$telefone." || ".$email; ?>
+										<a href="<?php echo $href_excluir ?>">Excluir</a>
+										<a href="<?php echo $href_alterar ?>">Alterar</a>
+									</h3>
+								</div>
+								</form>
+				<?php }}mysql_close(); }
+
+				else if (isset($_GET['acao']) && $_GET['acao'] == 'editar'){ 
 
 					$filtro = $_GET['reg'];
 					$id_user = $_GET['id_user'];
 
 					if(($filtro == "is_administrador") || ($filtro == "is_funcionario") || ($filtro == "is_cliente")) $tb = "usuario";
+					else if($filtro == "produtos") $tb = "produtos";
 
 					conectar();
 
@@ -219,8 +164,8 @@ if(isset($_GET['ativaFiltro'])){
 						<input id="cpf" maxlength="14" name="cpf" type="text" value="<?php echo $cpf ?>" required /> <br><br>
 						<input id="tel" maxlength="15" name="tel" type="text" value="<?php echo $telefone ?>" required /> <br><br>
 						<input name="email" type="email" value="<?php echo $email ?>" required /> <br><br>
-						<input name="senha1" id="senha1" type="password" placeholder="SENHA"/> <br><br>
-						<input id="senha2" name="senha2" type="password" placeholder="CONFIRMAR SENHA"/> <br><br>
+						<input name="senha1" id="senha1" type="password" placeholder="SENHA" required/> <br><br>
+						<input id="senha2" name="senha2" type="password" placeholder="CONFIRMAR SENHA" required/> <br><br>
 						<select name="tipo_usuario">
 							<option value="cliente" <?php if($is_cliente == 1) echo 'selected="selected"'; ?> >Cliente</option>
 							<option value="funcionario" <?php if($is_funcionario == 1) echo 'selected="selected"'; ?> >Funcionário</option>
