@@ -108,36 +108,6 @@ function alterarUsuario(){
 
 }
 
-/*
-
-function cadastrarProduto($nome,$img,$desc,$qtde,$valor){
-	conectar();
-	$sql = "INSERT INTO produtos(nm_produto,ds_produto,vl_produto,qt_produto)
-		VALUES ('".$nome."','".$desc."','".$valor."','".$qtde."')";
-		$insert = mysql_query($sql);
-		if($insert){
-			$sql = "SELECT MAX(id_produto) FROM produtos";
-			
-			$return = mysql_query($sql);
-			$row = mysql_fetch_array($return);
-			var_dump($row);
-		
-			mkdir("../produtos/$row[0]",0777) or die("erro ao criar diretorio");
-			$destino = "../produtos/$row[0]/".$img;
-			
-			if(move_uploaded_file($_FILES['nm_foto_produto']['tmp_name'],$destino)){	
-				}
-			$sql_update = "UPDATE produtos SET nm_foto_produto='$destino' WHERE id_produto=$row[0]";
-			$consulta = mysql_query($sql_update);
-			if($consulta){
-				echo ('<script> alert("Produto cadastrado com sucesso!"); location.href="produtos.php";</script>');
-					 }
-		}
-else{
-	print mysql_error();
-	}
-	mysql_close();
-}
 
 function alterarProduto($id){
 	$nome = $_POST['nm_produto'];
@@ -166,7 +136,7 @@ function alterarProduto($id){
 	mysql_close();
 
 }
-
+/*
 function alterarCliente($id){
 	$nome = $_POST['nm_cliente'];
 	$email = $_POST['nm_email'];

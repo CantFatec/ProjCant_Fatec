@@ -36,7 +36,7 @@ include 'session.php';
 	<div clas="clear"> </div>
 	<div class="grids">
 		<ul>
-			<h4>CADASTRO CLIENTES</h4>
+			<h4>CADASTRO DE USUÁRIOS</h4><br>
 			<p>
 				<form name="form1" method="POST">
 					<input id="nome" onkeypress="mascara(this, letras1)" onBlur="ValidaNome(form1.nome);" maxlength="50" name="nome" type="text" name="nome" required placeholder="NOME COMPLETO"/> <br><div id="erros1" style="color:red"></div>
@@ -64,31 +64,11 @@ include 'session.php';
 				</form>
 			</p>
 		<div class="clear"> </div>
-		<br>
-		<h4>Latest-Items</h4>
-		<li>
-			<h3>Ipsum simply</h3>
-			<img src="images/thumb-3.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<li>
-			<h3> Lorem Ipsum</h3>
-			<img src="images/thumb-1.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-		<li class="last">
-			<h3>Lorem simply</h3>
-			<img src="images/thumb-7.jpg">
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
-			<button>$12.58</button>
-		</li>
-			<a href="#">View all</a>
+		<br>		
 		</ul>
 	<div class="clear"> </div>
 </div>
-	<?php include 'menulateral.php'; ?>
+	
 	<div class="clear"> </div>
    </div>
 </div>

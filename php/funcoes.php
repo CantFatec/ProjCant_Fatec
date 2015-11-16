@@ -32,6 +32,10 @@ function logar($login,$senha_hash){
 	}
 	if(!isset($_SESSION['logado'])){
 		echo "<script>alert('Cadastro não Encontrado!');</script>";
+	}else{
+		if($_SESSION['is_administrador' == 1]) echo "<script>location.href='adm.php';</script>";
+		else if($_SESSION['is_funcionario' == 1]) echo "<script>location.href='statuspedido.php';</script>";
+		else echo "<script>location.href='index.php';</script>";
 	}
 	mysql_close();
 }
@@ -108,7 +112,7 @@ function alterarUsuario(){
 		$senha2 = $_POST['senha2'];
 			$senha2 = md5($senha2);
 			
-		if($senha1 === $senha2){
+		if($senha1 == $senha2){
 			$update = 1;
 		}else{
 			echo "<script>alert('Senhas Divergentes!'); window.history.go(-1);</script>";
@@ -125,7 +129,7 @@ function alterarUsuario(){
 	conectar();
 	
 	if($update==1){
-		$sql = "UPDATE $tb SET nome='$nome',telefone='$tel',email='$email' WHERE id_usuario=$id_user";
+		$sql = "UPDATE $tb SET nome='$nome',telefone='$tel',email='$email',senha='$senha1' WHERE id_usuario=$id_user";
 		$consulta = mysql_query($sql);
 		if($consulta){
 			echo ('<script> alert("Dados alterado com sucesso!"); location.href="index.php";</script>');
@@ -134,10 +138,10 @@ function alterarUsuario(){
 			print mysql_error();
 				 }
 	}else{
-		$sql = "UPDATE $tb SET nome='$nome',telefone='$tel',email='$email',senha='$senha1' WHERE id_usuario=$id_user";
+		$sql = "UPDATE $tb SET nome='$nome',telefone='$tel',email='$email' WHERE id_usuario=$id_user";
 		$consulta = mysql_query($sql);
 		if($consulta){
-			echo ('<script> alert("Dados alterado com sucesso!"); location.href="index.php";</script>');
+			echo ('<script> alert("Dados alterado com sucesso!"); location.href="adm.php";</script>');
 				 }
 		else{
 			print mysql_error();
@@ -162,143 +166,39 @@ function contato($remetente,$email,$assunto,$mensagem){
 	}
 }
 
-/*
+function alterarProduto(){
+	$id_produto = $_POST['id_produto'];	
+	$nome = $_POST['nome'];
+		$nome_img = str_replace(" ", "_", $nome);
+	$valor = $_POST['valor'];
+	$tipo = $_POST['tipo_produto'];
+	$desc = $_POST['desc'];
+	$arquivo = $_FILES['imagem']['name'];
+		$arquivo = str_replace(" ", "_", $arquivo);
 
-function cadastrarProduto($nome,$img,$desc,$qtde,$valor){
 	conectar();
-	$sql = "INSERT INTO produtos(nm_produto,ds_produto,vl_produto,qt_produto)
-		VALUES ('".$nome."','".$desc."','".$valor."','".$qtde."')";
-		$insert = mysql_query($sql);
-		if($insert){
-			$sql = "SELECT MAX(id_produto) FROM produtos";
-			
-			$return = mysql_query($sql);
-			$row = mysql_fetch_array($return);
-			var_dump($row);
-		
-			mkdir("../produtos/$row[0]",0777) or die("erro ao criar diretorio");
-			$destino = "../produtos/$row[0]/".$img;
-			
-			if(move_uploaded_file($_FILES['nm_foto_produto']['tmp_name'],$destino)){	
-				}
-			$sql_update = "UPDATE produtos SET nm_foto_produto='$destino' WHERE id_produto=$row[0]";
-			$consulta = mysql_query($sql_update);
-			if($consulta){
-				echo ('<script> alert("Produto cadastrado com sucesso!"); location.href="produtos.php";</script>');
-					 }
-		}
-else{
-	print mysql_error();
-	}
-	mysql_close();
-}
 
-function alterarProduto($id){
-	$nome = $_POST['nm_produto'];
-	$valor = $_POST['vl_produto'];
-	$qtde = $_POST['qt_produto'];
-	$desc = $_POST['ds_produto'];
-	$img = $_FILES['nm_foto_produto']['name'];
-	conectar();
-	$seleciona_img = mysql_query("SELECT nm_foto_produto FROM produtos");
-	$arr_img = mysql_fetch_array($seleciona_img);
-	$last_img = $arr_img[0];
-	if($img == ""){
-		$destino = $last_img;
-		}else{
-			$destino = "../produtos/$id/".$img;
-		}
-	if(move_uploaded_file($_FILES['nm_foto_produto']['tmp_name'],$destino)){}	
-	$sql = "UPDATE produtos SET nm_produto='$nome',ds_produto='$desc',vl_produto='$valor',qt_produto='$qtde',nm_foto_produto='$destino' WHERE id_produto=$id";
-	$consulta = mysql_query($sql);
-	if($consulta){
-		echo ('<script> alert("Produto alterado com sucesso!"); location.href="produtos.php";</script>');
-			 }
-	else{
-		print mysql_error();
-			 }
-	mysql_close();
-
-}
-
-function alterarCliente($id){
-	$nome = $_POST['nm_cliente'];
-	$email = $_POST['nm_email'];
-	$tel = $_POST['cd_telefone'];
-	$cpf = $_POST['cd_cpf'];
-	$dtnasc = $_POST['dt_nascimento'];
-	conectar();
+	$sql = "UPDATE produto SET nome,valor,tipo,descricao,destino_img VALUES ('".$id_produto."','".$nome."','".$valor."','".$tipo."','".$desc."','".$arquivo."')";
+	$update = mysql_query($sql);
 	
-	$sql = "UPDATE clientes SET nm_cliente='$nome',nm_email='$email',cd_telefone='$tel',cd_cpf='$cpf',dt_nascimento='$dtnasc' WHERE id_cliente=$id";
-	$consulta = mysql_query($sql);
-	if($consulta){
-		echo ('<script> alert("Cliente alterado com sucesso!"); location.href="clientes.php";</script>');
-			 }
-	else{
-		print mysql_error();
-			 }
-	mysql_close();
+	if($update){
+			$destino = "images/$nome_img/".$arquivo;
+			if($destino == "images/$nome_img/"){
+				$destino = "images/padrao.png";
+			}
+		if(move_uploaded_file($_FILES['imagem']['tmp_name'],$destino)){}
+		
+		$sql = ("UPDATE produto SET destino_img='$destino' WHERE nome='$nome'");
+		$update = mysql_query($sql);
 
-}
-
-function consultaProdutos(){
-	conectar();
-	$sql = "select * from produtos";
-	$consulta = mysql_query($sql);
-	if(count($consulta)>0){
-		echo "<table style='width:100%;text-align:center;'>
-				<tr><th>ID</th><th>Nome</th><th>Descrição</th><th>Valor</th><th>Quantidade</th><th>Imagem</th><th>Alterar</th><th>Excluir</th></tr>";
-		while($resultado = mysql_fetch_row($consulta)){
-			echo "<tr><td>".$id = $resultado[0]."</td>";
-			echo "<td>".$nome = $resultado[1]."</td>";
-			echo "<td>".$desc = $resultado[2]."</td>";
-			echo "<td>".$valor = $resultado[3]."</td>";
-			echo "<td>".$quant = $resultado[4]."</td>";
-			$foto = $resultado[5];
-			echo "<td><img src='$foto' width='100px' height='100px' /></td>";
-			echo "<td><form><input name='produto' type='hidden' value=".$resultado[0]." />
-			<input name='nome' type='hidden' value=".$resultado[1]." />
-			<input name='alterarProduto' type='submit' value='Alterar' /></form></td>";
-			echo "<td><form><input name='produto' type='hidden' value=".$resultado[0]." />
-			<input name='nome' type='hidden' value=".$resultado[1]." />
-			<input name='excluiProduto' type='submit' value='Excluir' /></td></tr></form>";
+		if($update){
+			echo ('<script> alert("Produto Atualizado com Sucesso!"); location.href="cadastro_prod.php";</script>');
+		}else{
+			echo "Impossível atualizar a imagem do produto! Erro:".mysql_error();
 		}
-		echo "</table>";
-	}
-	else{
-		print "Erro: ".mysql_error();
-	}
-	mysql_close();
-}
-
-function consultaClientes(){
-	conectar();
-	$sql = "select * from clientes";
-	$consulta = mysql_query($sql);
-	if(count($consulta)>0){
-		echo "<table style='width:100%;text-align:center;'>
-				<tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th><th>CPF</th><th>Data de Nascimento</th><th>Alterar</th><th>Excluir</th></tr>";
-		while($resultado = mysql_fetch_row($consulta)){
-			echo "<tr><td>".$id = $resultado[0]."</td>";
-			echo "<td>".$nome = $resultado[1]."</td>";
-			echo "<td>".$email = $resultado[2]."</td>";
-			echo "<td>".$tel = $resultado[3]."</td>";
-			echo "<td>".$cpf = $resultado[4]."</td>";
-			echo "<td>".$dtnasc = $resultado[5]."</td>";
-			echo "<td><form><input name='cliente' type='hidden' value=".$resultado[0]." />
-			<input name='nomeCli' type='hidden' value=".$resultado[1]." />
-			<input name='alterarCliente' type='submit' value='Alterar' /></form></td>";
-			echo "<td><form><input name='cliente' type='hidden' value=".$resultado[0]." />
-			<input name='nomeCli' type='hidden' value=".$resultado[1]." />
-			<input name='excluiCliente' type='submit' value='Excluir' /></td></tr></form>";
-		}
-		echo "</table>";
-	}
-	else{
-		print "Erro: ".mysql_error();
+		
+	}else{
+		echo "erro ao fazer insert: ".mysql_error();
 	}
 	mysql_close();
 }
-
-*/
-?>

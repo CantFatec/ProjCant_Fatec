@@ -20,6 +20,14 @@ include 'session.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/slider.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+			$("button").click(function(){
+			$(".p2").toggle();
+    });
+});
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -35,6 +43,15 @@ include 'session.php';
 			<img src="images/thumb-1.jpg">
 			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
 			<button>R$10</button>
+			<form name="radiobotao" class="p2" style="display:none">
+			<input type="radio" name="guarni" value="ovo" checked>Ovo Frito
+			<br>
+			<input type="radio" name="guarni" value="batata">Batata Frita
+			<br>
+			<input type="radio" name="guarni" value="omelete">Omelete
+			<br>
+			<input type="submit" name="#" value="compra">
+			</form>
 		</li>
 		<li>
 			<h3>Prato feito Filé de Frango Grelhado</h3>

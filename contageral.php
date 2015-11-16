@@ -34,35 +34,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="main-body">	
 	<?php include 'menulateral.php'; ?>
 	
-	<div class="titulo">
+	<div class="titulo">	
 	<h1>Conta Geral</h1>
 	<br>
 	</div>
-	<div class="order1">
-	<form>
-	<h3>Alterar Senha</h3>
-	<br>
-	<a href="alterarsenha.php">Alterar</a>
-	</form>
-	<br>
-	<form>
-	<h3>Pedidos</h3>
-	<br>
-	<a href="historicocompras.php">Histórico</a>
-	<a href="statuspedido.php">Acompanhar Status</a>
-	</form>
-	<br>
-	<form>
-	<h3>Alterar Senha</h3>
-	<br>
-	<a href="#">Alterar</a>
-	</form>
-	<br>
-	<form>
-	<h3>Alterar Senha</h3>
-	<br>
-	<a href="#">Alterar</a>
-	</form>
+	<div class="grids2">
+		<form action="alterarsenha.php">
+			<input style="width:75%; margin:6px 1%;" name="botaoconta" type="submit" value="Alterar Senha"></input>
+		</form>
+		
+		<form action="pagina">
+			<input  style="width:75%; margin:6px 1%;" name="botaoconta" type="submit" value="Histórico de Pedidos"></input>
+		</form>
+		
+		<form action="statuspedido.php">
+			<input  style="width:75%; margin:6px 1%;" name="botaoconta" type="submit" value="Status de Pedidos"></input>
+		</form>
 	<br>
 	
 	

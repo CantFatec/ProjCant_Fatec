@@ -28,7 +28,7 @@
 <?php // COMENTÁRIO: Aqui ficam as páginas exibidas para os CLIENTES LOGADOS ?>
      	  					<li><a href="contact.php">Fale Conosco</a></li>
 						<li><a href="gallery.php">Cardápio</a></li>
-						<li><a href="cliente.php">Meu Cadastro</a></li>
+						<li><a href="contageral.php">Meu Cadastro</a></li>
 <?php // FIM_paginaClientesLogados ?>			
             	
             <?php 	}

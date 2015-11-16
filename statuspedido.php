@@ -35,7 +35,7 @@ include 'session.php';
 	<h1>Status Pedido</h1>
 	</div>
 	<br>
-			<table width="715" cellspacing="0" cellpadding="4" style="background-color: #fff;border:2px dotted #000;">
+			<table width="715" cellspacing="0" cellpadding="4" style="background-color: #fff;border:2px solid #000;">
 				<tr>
 					<td width="90" bgcolor="#CCCCCC"><strong>Status</strong></td>
 					<td width="105" bgcolor="#CCCCCC"><strong>Número do Pedido</strong></td>

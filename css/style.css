@@ -5,11 +5,11 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
 /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0;padding:0;}
 blockquote,q{quotes:none;}
-blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+/*blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}*/
 table{border-collapse:collapse;border-spacing:0;}
 /* start editing from here */
 a{text-decoration:none;}
@@ -146,6 +146,7 @@ body{
 .main-body{
 	background: #fff;
 	padding:12px 12px;
+	height:auto;
 }
 .titulo h1{
 font-size:40px;
@@ -181,7 +182,43 @@ font-size:40px;
 	resize:none;
 	font-family: 'Istok Web', sans-serif;
 }
-/*--grids--*/
+.telaloja{
+	margin:15px 0;
+	border-top:1px; 
+	float: left;
+	width: 705px;
+}
+/*--grids
+
+style table usuarios--*/
+#tabela{
+	font-size: 12px;
+    width:100%;
+    border:solid 1px;
+    text-align:center;
+    border-collapse:collapse;
+}
+ 
+#tabela tbody tr{
+    border:solid 1px;
+    height:30px;
+    cursor:pointer;
+}
+ 
+#tabela thead{
+    background:beige;
+}
+ 
+#tabela thead th:nth-child(1){
+    width:100px;
+}
+ 
+#tabela input{
+	font-size: 12px;
+    color:navy;
+    width:80%;
+}
+
 .grids{
 	margin:15px 0;
 	border-top:1px solid #eee; 
@@ -193,6 +230,7 @@ font-size:40px;
 	padding: 5px;
 	box-shadow: 0px 0px 5px #CDCDCD;
 }
+
 .grids li img:hover{
 	cursor:pointer;
 	box-shadow: 0px 0px 5px #777;
@@ -200,9 +238,10 @@ font-size:40px;
 .grids li{
 	float: left;
 	display: inline;
+	margin: 0px 5px; 
 	width: 214px;
 	margin: 0 21px 0 0;
-	background: white;
+	background: #fff;
 	padding-bottom: 10px;
 	border-radius: .3em;
 }
@@ -212,6 +251,13 @@ font-size:40px;
 /*.grids li.last{
 	margin-right: 0;
 }*/
+.texto{
+	color: #888;
+	font-size: 12px;
+	padding:px 8px;
+	background: #fff;
+	line-height: 1.8em;
+}
 .grids h3{
 	color: #000;
 	padding: 10px 0 10px 0;
@@ -223,9 +269,10 @@ font-size:40px;
 .grids p{
 	color: #888;
 	font-size: 12px;
-	padding:8px 0;
+	padding:px 8px;
 	background: #fff;
 	line-height: 1.8em;
+	word-wrap: break-word;
 }
 .grids button{
 	color: #555;
@@ -330,6 +377,17 @@ font-size:40px;
 	display: inline-block;
 }
 
+.grids input[type="radio"][name="guarni"]{
+	width:10px;
+	padding:8px;
+	font-size:16px;
+	background:#ffffff;
+	box-shadow: 0 0 0px #ffffff;
+	border:none;
+	outline: none;
+	font-family: 'Istok Web', sans-serif;
+}
+
 .grids input,select{
 	width:450px;
 	padding:8px;
@@ -423,7 +481,7 @@ font-size:40px;
 
 .grids input[type="submit"],input[type="reset"]{
 	width:100px;
-	padding:15px 8px;
+	padding:10px 8px;
 	font-size:16px;
 	background:#333;
 	border:none;
@@ -464,6 +522,76 @@ font-size:40px;
 	color: #fff;
 }
 /*-----end of footer-----*/
+/*cardapio*/
+/*.grids2 li{
+	float: left;
+	display: inline;
+	width: 214px;
+	margin: 0 21px 0 0;
+	background: white;
+	padding-bottom: 10px;
+	border-radius: .3em;
+}*/
+.main-body1 {
+	background: #fff;
+	padding:12px 12px;
+	height:auto;
+	
+}
+
+.grids2 li{
+	float: left; 
+	display: inline;
+	width: 214px;
+	margin: 0 21px 0 0;
+	background: #fff;
+	padding-bottom: 10px;
+	border-radius: .3em;
+}
+
+.grids2 p{
+	color: #888;
+	font-size: 12px;
+	padding:px 8px;
+	background: #fff;
+	line-height: 1.8em;
+}
+
+.grids2 button{
+	color: #fff;
+	width:75%;
+	border: none;
+	margin:6px 0;
+	font-size:18px;
+	padding:10px 8px;
+	border-radius: 1.3em;
+	background-color:#0CA38B;
+	font-family: 'Libre Baskerville', serif;	
+}
+
+.grids2 input[type="submit"], input[name="botaoadm"]{
+	color: #fff;
+	width:100%;
+	border: none;
+	margin:6px 15%;
+	font-size:18px;
+	padding:10px 8px;
+	border-radius: 1.3em;
+	background-color:#0CA38B;
+	font-family: 'Libre Baskerville', serif;	
+}
+
+.grids2 input[type="submit"]:hover, input[name="botaoadm"]:hover{
+	color: #CFCFCF;
+	background-color:#0CA38B;
+	cursor: pointer;
+}
+
+.grids2 button[name="botaoadm"]:hover{
+	color: #CFCFCF;
+	cursor: pointer;
+}
+
 /*-----order------*/
 .order h4,.order p{
 	border-bottom:1px solid silver;
@@ -516,11 +644,31 @@ font-size:40px;
 	font-family: 'Libre Baskerville', serif;
 	text-transform: uppercase;
 	background: url(../images/nav-bg.jpg);
-	width:680px;
+	width:500px;
 }
 .order1 a{
 	font-size: 13px;
-	margin: 0px 8px 10px 0px;
+	margin: 0px 0px 0px 223px;
+	font-family: 'Libre Baskerville', serif;
+	text-transform: normal;
+	background-color: #0CA38B;
+	padding: 10px 10px;
+	color: white;
+	margin-top:20px;
+}
+.order1 a[name="margem"]{
+	font-size: 13px;
+	margin: 0px 0px 0px 0px;
+	font-family: 'Libre Baskerville', serif;
+	text-transform: normal;
+	background-color: #0CA38B;
+	padding: 10px 10px;
+	color: white;
+	margin-top:20px;
+}
+.order1 a[name="margem1"]{
+	font-size: 13px;
+	margin: 0px 0px 0px 165px;
 	font-family: 'Libre Baskerville', serif;
 	text-transform: normal;
 	background-color: #0CA38B;
@@ -531,6 +679,20 @@ font-size:40px;
 .order1 a:hover{
 	text-decoration:underline;
 }
+/*Loja*/
+.ploja{
+	border:solid;
+	width:50%;
+	padding: 10px 10px;
+	display:inline;
+	float:left;
+}
+.ploja1{
+	display:inline;
+	margin-left:15%;
+	float:left;
+}
+
 /*--boxes--*/
 .boxes{
 	margin: 15px 0;
@@ -664,7 +826,7 @@ font-size:40px;
 }
 .feedback input[type="submit"]{
 	width:100px;
-	padding:15px 8px;
+	padding:10px 8px;
 	font-size:16px;
 	background:#333;
 	border:none;
