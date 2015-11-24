@@ -13,12 +13,9 @@ include 'session.php';
 <html>
 <head>
 <title>Cantina Fatec Praia Grande | Cadastro</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php include 'head.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="validacao.js"></script>
+<script src="js/validacao.js"></script>
 
 <script type="text/javascript" src="js/slider.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>

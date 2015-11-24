@@ -29,10 +29,7 @@ if(isset($_GET['limparCarrinho'])){
 <html>
 <head>
 <title>Cantina Fatec Praia Grande | Sobre</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php include 'head.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/slider.js"></script>
 
@@ -51,7 +48,7 @@ if(isset($_GET['limparCarrinho'])){
 
 		<?php if(!empty($_SESSION['idProdutoCarrinho']) && $_SESSION['nomeProduto']){
 					conectar();
-					$idproduto = $_SESSION['produto'];
+					$idproduto = $_SESSION['idProdutoCarrinho'];
 					$sql = "select * from produto where id_produto=$idproduto";
 					$consulta = mysql_query($sql);
 					if(count($consulta)>0){
@@ -70,25 +67,44 @@ if(isset($_GET['limparCarrinho'])){
 		?>
 		
 				
-		<TABLE  width="728" ALIGN=center CELLSPACING="4" CELLPADDING="6" FRAME="vsides" RULES="all">
-			<tr>
-			<td>Produto</td>
-			<td>Valor</td>
-			<td>Quantidade</td>				
-			</tr>
+		<TABLE width="930" align=center style="background-color: #fff;border:2px solid #000;">
+			<tbody>
+				<tr style="text-align:center;border:1px; border-style:solid; " >
+				<td bgcolor="#CCCCCC">Produto</td>
+				<td bgcolor="#CCCCCC">Acompanhamento</td>
+				<td bgcolor="#CCCCCC">Valor</td>
+				<td bgcolor="#CCCCCC">Quantidade</td>
+				<td bgcolor="#CCCCCC">Remover Produto</td>
+				<td bgcolor="#CCCCCC">Valor Total:</td>					
+				</tr>
+				
+				<tr style="text-align:center;vertical-align:middle">
+				<td>
+					<img style="width:80px;height:50px" src="<?php echo $img; ?>">
+				</td>
+				<td></td>
+				<td>
+					R$ <?php echo $valor;?>
+				</td>
+				<td>
+					<form>
+						<input type="number" min="1" max="10" name="qtd" value="1" size="3px"/>
+					</form>
+				</td>
+				<td>
+					<form>
+						<input type="submit" value="Apagar" name="limparCarrinho"/>
+					</form>
+				</td>
+				<td>
+					R$ <?php echo $valor;?>
+				</td>
+				</tr>			
+			</tbody>
+			</table>	
+		
+		
 			
-			<tr>
-			<td><img style="width:80px;height:50px" src="<?php echo $img; ?>" ></td>
-			<td>R$ <?php echo $valor;?></td>
-			<td><form><input type="number" min="1" name="qtd" /></form></td>
-			</tr>				
-		</table>
-		<form><input type="submit" value="Apagar" name="limparCarrinho"></input></form>
-		
-		
-			<tr>
-			<td>Valor Total:</td>				
-			</tr>
 			
 			<tr>
 			<td><?php valorTotal();  ?></td>				

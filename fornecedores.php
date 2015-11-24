@@ -13,9 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Cantina Fatec Praia Grande | Conta Geral</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php include 'head.php'; ?>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/jquery1.js"></script>
 <script type="text/javascript" src="js/jquery.lightbox.js"></script>

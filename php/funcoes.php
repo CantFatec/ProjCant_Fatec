@@ -1,17 +1,19 @@
 <?php
+
+error_reporting(0);
+
 function conectar(){
 	$server = "mysql.hostinger.com.br";
 	$username = "u168415392_root";
 	$password = "cantfatec2015";
-
-	$con = @mysql_connect($server,$username,$password);
+	$banco = "u168415392_cant";
+	
+	$con = mysql_connect($server,$username,$password);
 	if($con){
-		$banco = "u168415392_cant";
 		mysql_select_db($banco);
-		    }
-	else{
-		print "Erro ao conectar: ".mysql_error();
-				 }
+	}else{
+		die('Não foi possível conectar: ' . mysql_error());
+	}
 }
 
 function logar($login,$senha_hash){
@@ -37,7 +39,7 @@ function logar($login,$senha_hash){
 		else if($_SESSION['is_funcionario' == 1]) echo "<script>location.href='statuspedido.php';</script>";
 		else echo "<script>location.href='index.php';</script>";
 	}
-	mysql_close();
+	mysqli_close();
 }
 
 function logout(){
@@ -139,7 +141,7 @@ function alterarUsuario(){
 				 }
 	}else{
 		$sql = "UPDATE $tb SET nome='$nome',telefone='$tel',email='$email' WHERE id_usuario=$id_user";
-		$consulta = mysql_query($sql);
+		$consulta = $mysql_query($sql);
 		if($consulta){
 			echo ('<script> alert("Dados alterado com sucesso!"); location.href="adm.php";</script>');
 				 }
@@ -166,39 +168,39 @@ function contato($remetente,$email,$assunto,$mensagem){
 	}
 }
 
-function alterarProduto(){
-	$id_produto = $_POST['id_produto'];	
+function cadastrarEAlterarProduto($acao){
+	$id = $_POST['id_prod'];
 	$nome = $_POST['nome'];
-		$nome_img = str_replace(" ", "_", $nome);
 	$valor = $_POST['valor'];
 	$tipo = $_POST['tipo_produto'];
 	$desc = $_POST['desc'];
-	$arquivo = $_FILES['imagem']['name'];
-		$arquivo = str_replace(" ", "_", $arquivo);
+	$imagem = $_FILES['imagem']['tmp_name'];
+	
+	if(getimagesize($imagem == false)){
+		echo "<script>alert('Por Favor, Insira uma Imagem.');window.hostory.go(-1);</script>";
+	}else{
+		$imagem = addslashes($imagem);
+		$imagem = file_get_contents($imagem);
+		$imagem = base64_encode($imagem);
 
 	conectar();
 
-	$sql = "UPDATE produto SET nome,valor,tipo,descricao,destino_img VALUES ('".$id_produto."','".$nome."','".$valor."','".$tipo."','".$desc."','".$arquivo."')";
-	$update = mysql_query($sql);
-	
-	if($update){
-			$destino = "images/$nome_img/".$arquivo;
-			if($destino == "images/$nome_img/"){
-				$destino = "images/padrao.png";
-			}
-		if(move_uploaded_file($_FILES['imagem']['tmp_name'],$destino)){}
-		
-		$sql = ("UPDATE produto SET destino_img='$destino' WHERE nome='$nome'");
-		$update = mysql_query($sql);
+	if($acao == 0){
+		$sql = "INSERT INTO produto VALUES (null,'".$nome."','".$valor."','".$tipo."','".$desc."','".$imagem."')";
+		$execute = mysql_query($sql);
 
-		if($update){
-			echo ('<script> alert("Produto Atualizado com Sucesso!"); location.href="cadastro_prod.php";</script>');
-		}else{
-			echo "Impossível atualizar a imagem do produto! Erro:".mysql_error();
-		}
-		
+		if($execute) echo "<script>alert('Produto: $nome, Cadastrado com Sucesso!');</script>";
+		else echo "<script>alert('Erro ao Cadastrar o Produto: $nome !')</script>";
 	}else{
-		echo "erro ao fazer insert: ".mysql_error();
+		$sql = "UPDATE produto SET nome='".$nome."', valor='".$valor."', tipo='".$tipo."', descricao='".$desc."', imagem='".$imagem."' WHERE id_produto = '".$id."'";
+		$execute = mysql_query($sql);
+
+		if($execute) echo "<script>alert('Produto: $nome, Atualizado com Sucesso!');</script>";
+		else echo "<script>alert('Erro ao Atualizar o Produto: $nome !')</script>";
 	}
 	mysql_close();
+
+	}
+
+	
 }

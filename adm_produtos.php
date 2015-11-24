@@ -15,25 +15,29 @@ if(!empty($_POST["login"]) && !empty($_POST["senha"])){
 if(isset($_GET['logout'])) {
 	logout();
 }
+
 if(isset($_GET['acao']) && $_GET['acao'] == 'excluir'){
 	$identifica = $_GET['id_produto'];
 	conectar();
+
 	$deleta = mysql_query("DELETE FROM produto WHERE id_produto = '$identifica'");
+
+	if($deleta)	echo "<script>alert('Produto: $identifica, Excluído com Sucesso!');</script>";
+	else echo "<script>alert('Falha ao Excluir Produto: $identifica');</script>";
+
 	mysql_close();
-	echo '<script>alert("Produto deletado com sucesso!"); location.href="adm_usuarios.php" </script>';
+	
 }
 if(isset($_POST['alt_prod'])){
-	alterarProduto();
+	$acao = 1;
+	cadastrarEAlterarProduto($acao);
 }
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>The Free Food-Point for Website Template | About :: w3layouts</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php include 'head.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" src="js/script.js"></script>
@@ -107,8 +111,8 @@ if(isset($_POST['alt_prod'])){
 									<th><input type="text" id="Valor"/></th>
 									<th><input type="text" id="Tipo" /></th>
 									<th><input type="text" id="Descricao"/></th>
-									<th>Alterar</th>
-									<th>Excluir</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 						<?php
@@ -186,10 +190,11 @@ if(isset($_POST['alt_prod'])){
 						</select><br><br>
 						<textarea name="desc" rows="4" cols="50" placeholder="DESCRIÇÃO" style="width:450px;padding:8px;font-size:16px;color:#333;background:#eee;box-shadow: 0 0 6px #aaa;border:none;outline: none;resize:none;font-family: 'Istok Web', sans-serif;"><?php echo $descricao ?></textarea>
 						<br><br>
-						<input type="file" name="imagem" value="<?php echo $imagem_prod ?>"  /><br><br>
-						<img src="<?php echo $imagem_prod ?>" width="100px" hegth="100px" />
+						<input type="file" name="imagem" /><br><br>
+						<?php echo '<img height="100px" width="100px" src="data:image;base64,'.$imagem_prod.'">' ?>
 						<br><br>
 						<input type="hidden" name="alt_prod" />
+						<input type="hidden" name="id_prod" value="<?php echo $id_produto; ?>" />
 						<input type="submit" value="CONFIRMAR" />
 						<input type="reset" value="LIMPAR" /><br><br>
 				</form>

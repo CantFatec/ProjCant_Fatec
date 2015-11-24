@@ -72,19 +72,17 @@ function chamarprodutolanche(){
 			$desc = $usuario[4];
 			$img = $usuario[5];
 			
-			echo "<li>";
-			echo "<h3>$nome</h3>";
-			echo "<img src=$img>";
-			echo "<p>$desc</p>";
-			echo "<h3>R$ $valor</h3>";
+			echo "<li name='licardapio' style='border:ridge; margin-right: 10px;'>";
+			echo "<h3 style='margin: 0px 5px'>$nome</h3>";
+			echo "<img style='width:205px; height:125px' src=$img>";
+			echo "<p style='margin: 0px 5px'>$desc</p>";
+			echo "<h3 style='margin: 0px 5px'>R$ $valor</h3>";
 			echo "<form>";
-			echo "<input type='radio' name='guarni' value='ovo' checked>Ovo Frito";
-			echo "<br>";
-			echo "<input type='radio' name='guarni' value='batata'>Batata Frita";
-			echo "<br>";
-			echo "<input type='radio' name='guarni' value='omelete'>Omelete";
-			echo "<br>";
-			echo "<input type='submit' name='#' value='Comprar'>";
+			echo "<input style='margin: 0px 5px' type='submit' name='#' value='Comprar'>";
+			echo "<input type='hidden' name='produto' value='$id'></input>";
+			echo "<input type='hidden' name='nome_produto' value='$nome'></input>";
+			echo "<input type='hidden' name='preco_produto' value='$valor'></input>";
+
 			echo "</form>";
 			echo "</li>";
 		}
@@ -107,19 +105,17 @@ function chamarprodutobebidas(){
 			$desc = $usuario[4];
 			$img = $usuario[5];
 			
-			echo "<li>";
-			echo "<h3>$nome</h3>";
-			echo "<img src=$img>";
-			echo "<p>$desc</p>";
-			echo "<h3>R$ $valor</h3>";
+			echo "<li name='licardapio' style='border:ridge; margin-right: 10px;'>";
+			echo "<h3 style='margin: 0px 5px'>$nome</h3>";
+			echo "<img style='width:205px; height:125px' src=$img>";
+			echo "<p style='margin: 0px 5px'>$desc</p>";
+			echo "<h3 style='margin: 0px 5px'>R$ $valor</h3>";
 			echo "<form>";
-			echo "<input type='radio' name='guarni' value='ovo' checked>Ovo Frito";
-			echo "<br>";
-			echo "<input type='radio' name='guarni' value='batata'>Batata Frita";
-			echo "<br>";
-			echo "<input type='radio' name='guarni' value='omelete'>Omelete";
-			echo "<br>";
-			echo "<input type='submit' name='#' value='Comprar'>";
+			echo "<input style='margin: 0px 5px' type='submit' name='#' value='Comprar'>";
+			echo "<input type='hidden' name='produto' value='$id'></input>";
+			echo "<input type='hidden' name='nome_produto' value='$nome'></input>";
+			echo "<input type='hidden' name='preco_produto' value='$valor'></input>";
+
 			echo "</form>";
 			echo "</li>";
 		}
@@ -155,9 +151,7 @@ function chamarprodutocreditos(){
 ?>
 
 <title>Cantina Fatec Praia Grande | Cardápio</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php include 'head.php'; ?>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/jquery1.js"></script>
 <script type="text/javascript" src="js/jquery.lightbox.js"></script>
@@ -203,8 +197,10 @@ function chamarprodutocreditos(){
     
 	<div class="main-body1">
 	<?php include 'menulateral.php'; ?>
-	
-	
+	<div class="titulo">
+	<h1>Cardápio</h1>
+	</div>
+	<br>
 	<div class="grids2"><button id="botao1">Pratos Feitos</button></div>
 	<div class="prato1" style="display:none">
 	<div class="grids">

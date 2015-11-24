@@ -13,9 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Cantina Fatec Praia Grande | Conta Geral</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php include 'head.php'; ?>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/jquery1.js"></script>
 <script type="text/javascript" src="js/jquery.lightbox.js"></script>
@@ -25,14 +23,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $('.gallery a').lightBox();
     });
     </script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
 			$("button").click(function(){
 			$(".p2").toggle();
     });
 });
-</script>
+</script>-->
 
 </head>
 <body>
@@ -47,7 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h4>Pratos Mais Vendidos</h4>
 		<li>
 			<h3>Prato feito Bife sem cebola</h3>
-			<img src="images/thumb-1.jpg">
+			<a href="gallery.php"><img style="width:205px; height:125px" src="images/thumb-1.jpg"></a>
 			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
 			<button>R$10</button>			
 			<form name="radiobotao" class="p2" style="display:none">
@@ -63,14 +61,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</li>
 		<li>
 			<h3>Prato feito Filé de Frango Grelhado</h3>
-			<img src="images/thumb-2.jpg">
+			<a href="gallery.php"><img style="width:205px; height:125px" src="images/thumb-2.jpg"></a>
 			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
 			<button>R$10</button>
 			
 		</li>
 		<li>
 			<h3>Paqueca (Frango, Carne, Presunto e queijo)</h3>
-			<img src="images/thumb-3.jpg">
+			<a href="gallery.php"><img style="width:205px; height:125px" src="images/thumb-3.jpg"></a>
 			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
 			<button>R$10</button>
 		</li>
@@ -78,19 +76,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<li>
 			<h3>Ipsum simplydsadsadsads d</h3>
-			<img src="images/thumb-5.jpg">
+			<a href="gallery.php"><img style="width:205px; height:125px" src="images/thumb-5.jpg"></a>
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
 			<button>R$10</button>
 		</li>
 		<li>
 			<h3> Lorem Ipsum dsadsasdadsahdhujsa</h3>
-			<img src="images/thumb-6.jpg">
+			<a href="gallery.php"><img style="width:205px; height:125px" src="images/thumb-6.jpg"></a>
 			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit ame</p>
 			<button>R$10</button>
 		</li>
 		<li>
 			<h3>Paqueca (Frango, Carne, Presunto e queijo)</h3>
-			<img src="images/thumb-3.jpg">
+			<a href="gallery.php"><img style="width:205px; height:125px" src="images/thumb-3.jpg"></a>
 			<p>Acompanha arroz, feijão, salada e uma garnição (Fritas, Omelete ou Ovo Frito)</p>
 			<button>R$10</button>
 		</li>

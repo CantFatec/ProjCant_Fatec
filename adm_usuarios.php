@@ -30,10 +30,7 @@ if(isset($_POST['alter_user'])){
 <html>
 <head>
 	<title>The Free Food-Point for Website Template | About :: w3layouts</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="css/slider-styles.css" type="text/css" media="all" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<?php include 'head.php'; ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
 	<script type="text/javascript" src="js/script.js"></script>
